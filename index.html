@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #F7F3EA; color: #14201A; font-family: Karla, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  img { display: block; max-width: 100%; }
+  nav::-webkit-scrollbar { display: none; }
+  a { color: #C0913F; text-decoration: none; }
+  a:hover { color: #8F6A28; }
+  @keyframes tuskFade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+</style>
+</helmet>
+
+<div style="width:100%;">
+
+  <header style="position:sticky; top:0; z-index:50; background:rgba(247,243,234,0.94); backdrop-filter:blur(10px); border-bottom:1px solid #E2D9C6;">
+    <div style="max-width:1240px; margin:0 auto; padding:10px clamp(14px,3vw,22px); display:flex; align-items:center; gap:clamp(10px,2vw,22px); flex-wrap:wrap;">
+      <a href="#home" style="display:block; flex:0 0 auto;"><img src="images/logo.png" alt="The Tusker Resort and Restaurant" style="height:clamp(40px,7vw,54px); width:auto; mix-blend-mode:multiply;" /></a>
+      <nav style="display:flex; flex:1 1 460px; flex-wrap:wrap; justify-content:flex-end; row-gap:2px; column-gap:clamp(12px,2.2vw,26px); align-items:center; min-width:0; font-size:clamp(12px,1.1vw,14px); letter-spacing:0.08em; text-transform:uppercase; color:#2A3A31;">
+        <a href="#stay" style="color:#2A3A31; padding:9px 0;">Stay</a>
+        <a href="#packages" style="color:#2A3A31; padding:9px 0;">Packages</a>
+        <a href="#restaurant" style="color:#2A3A31; padding:9px 0;">Restaurant</a>
+        <a href="#experiences" style="color:#2A3A31; padding:9px 0;">Experiences</a>
+        <a href="#gallery" style="color:#2A3A31; padding:9px 0;">Gallery</a>
+        <a href="#contact" style="color:#2A3A31; padding:9px 0;">Contact</a>
+      </nav>
+      <a href="{{ waHref }}" target="_blank" rel="noopener" style="flex:0 0 auto; margin-left:auto; background:#0F2A20; color:#F7F3EA; padding:12px clamp(16px,2.4vw,24px); border-radius:2px; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; white-space:nowrap;" style-hover="background:#C0913F; color:#0F2A20;">Book Now</a>
+    </div>
+  </header>
+
+  <section id="home" data-screen-label="Hero" style="position:relative; min-height:min(92vh, 940px); display:flex; align-items:flex-end; background-image:linear-gradient(180deg, rgba(8,24,15,0.55) 0%, rgba(8,24,15,0.25) 40%, rgba(8,24,15,0.92) 100%), url('images/hero-night.jpg'); background-size:cover; background-position:center;">
+    <div style="max-width:1240px; margin:0 auto; padding:clamp(96px,14vw,120px) clamp(18px,4vw,22px) 70px; width:100%; animation:tuskFade 0.9s ease both;">
+      <p style="margin:0 0 18px; font-size:13px; letter-spacing:0.32em; text-transform:uppercase; color:#D9C79B;">Habarana &nbsp;·&nbsp; Sri Lanka</p>
+      <h1 style="margin:0 0 22px; font-family:Marcellus, serif; font-weight:400; color:#F7F3EA; font-size:clamp(40px, 7.2vw, 88px); line-height:1.02; letter-spacing:-0.01em; max-width:16ch;">Sleep among the treetops.</h1>
+      <p style="margin:0 0 34px; color:#E4DCCB; font-size:clamp(16px,1.6vw,20px); line-height:1.65; max-width:52ch; text-wrap:pretty;">A timber tree house built into a living tree, village food cooked in front of you, and the quiet of the forest all night long.</p>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a href="#booking" style="background:#C0913F; color:#0B1A12; padding:16px 32px; border-radius:2px; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; font-weight:600;" style-hover="background:#F7F3EA;">Check availability</a>
+        <a href="#stay" style="border:1px solid rgba(247,243,234,0.5); color:#F7F3EA; padding:16px 32px; border-radius:2px; font-size:13px; letter-spacing:0.14em; text-transform:uppercase;" style-hover="border-color:#C0913F; color:#C0913F;">See the tree house</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="booking" data-screen-label="Booking bar" style="background:#0F2A20; color:#F7F3EA; padding:44px 22px;">
+    <div style="max-width:1240px; margin:0 auto;">
+      <div style="display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:24px;">
+        <h2 style="margin:0; font-family:Marcellus, serif; font-weight:400; font-size:clamp(22px,2.4vw,30px);">Booking enquiry</h2>
+        <p style="margin:0; color:#A9BCAF; font-size:14px;">Rates and availability are confirmed directly on WhatsApp.</p>
+      </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,190px), 1fr)); gap:16px; align-items:end;">
+        <label style="display:flex; flex-direction:column; gap:8px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#93A79A;">Name
+          <input type="text" value="{{ name }}" onChange="{{ onName }}" placeholder="Your name" style="background:rgba(247,243,234,0.06); border:1px solid rgba(247,243,234,0.22); color:#F7F3EA; padding:13px 14px; font-size:15px; font-family:Karla, sans-serif; border-radius:2px;" />
+        </label>
+        <label style="display:flex; flex-direction:column; gap:8px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#93A79A;">WhatsApp number
+          <input type="tel" value="{{ phone }}" onChange="{{ onPhone }}" placeholder="+94 ..." style="background:rgba(247,243,234,0.06); border:1px solid rgba(247,243,234,0.22); color:#F7F3EA; padding:13px 14px; font-size:15px; font-family:Karla, sans-serif; border-radius:2px;" />
+        </label>
+        <label style="display:flex; flex-direction:column; gap:8px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#93A79A;">Check-in
+          <input type="date" value="{{ checkin }}" onChange="{{ onCheckin }}" style="background:rgba(247,243,234,0.06); border:1px solid rgba(247,243,234,0.22); color:#F7F3EA; padding:12px 14px; font-size:15px; font-family:Karla, sans-serif; border-radius:2px;" />
+        </label>
+        <label style="display:flex; flex-direction:column; gap:8px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#93A79A;">Check-out
+          <input type="date" value="{{ checkout }}" onChange="{{ onCheckout }}" style="background:rgba(247,243,234,0.06); border:1px solid rgba(247,243,234,0.22); color:#F7F3EA; padding:12px 14px; font-size:15px; font-family:Karla, sans-serif; border-radius:2px;" />
+        </label>
+        <label style="display:flex; flex-direction:column; gap:8px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#93A79A;">Guests
+          <select value="{{ guests }}" onChange="{{ onGuests }}" style="background:#123227; border:1px solid rgba(247,243,234,0.22); color:#F7F3EA; padding:13px 14px; font-size:15px; font-family:Karla, sans-serif; border-radius:2px;">
+            <option value="1">1 guest</option>
+            <option value="2">2 guests</option>
+            <option value="3">3 guests</option>
+            <option value="4">4 guests</option>
+          </select>
+        </label>
+        <label style="display:flex; flex-direction:column; gap:8px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#93A79A;">Package
+          <select value="{{ pkg }}" onChange="{{ onPkg }}" style="background:#123227; border:1px solid rgba(247,243,234,0.22); color:#F7F3EA; padding:13px 14px; font-size:15px; font-family:Karla, sans-serif; border-radius:2px;">
+            <option value="TREE HOUSE ONLY">Tree house only</option>
+            <option value="DAY OUT">Day out</option>
+            <option value="BB">BB — bed &amp; breakfast</option>
+            <option value="HB">HB — half board</option>
+            <option value="FB">FB — full board</option>
+            <option value="COOKERY CLASS">Cookery class</option>
+          </select>
+        </label>
+        <button type="button" onClick="{{ onSubmit }}" style="background:#C0913F; color:#0B1A12; border:none; padding:15px 26px; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; font-weight:600; font-family:Karla, sans-serif; border-radius:2px; cursor:pointer; height:49px;" style-hover="background:#F7F3EA;">Send on WhatsApp</button>
+      </div>
+      <p style="margin:18px 0 0; font-size:13px; color:#7E9488;">Only 1 tree house unit and 20 restaurant seats — early enquiries are recommended.</p>
+    </div>
+  </section>
+
+  <section data-screen-label="About" style="background:#F7F3EA; padding:clamp(64px,8vw,120px) 22px;">
+    <div style="max-width:1240px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr)); gap:clamp(32px,5vw,72px); align-items:center;">
+      <div>
+        <p style="margin:0 0 16px; font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:#C0913F;">Welcome to The Tusker</p>
+        <h2 style="margin:0 0 24px; font-family:Marcellus, serif; font-weight:400; font-size:clamp(30px,4vw,50px); line-height:1.12; color:#0F2A20; max-width:22ch;">A small resort built by hand, around one tree.</h2>
+        <p style="margin:0 0 18px; color:#3D4B43; font-size:17px; line-height:1.75; text-wrap:pretty;">The Tusker is a single timber tree house standing on hand-cut poles, with a woven palm roof and a wide open deck that looks straight into the canopy. Everything you see was shaped on site by local craftsmen.</p>
+        <p style="margin:0 0 30px; color:#3D4B43; font-size:17px; line-height:1.75; text-wrap:pretty;">Downstairs, our 20-seat restaurant serves village Sri Lankan cooking plated with real care — and if you would like, you cook it with us.</p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:24px; border-top:1px solid #E2D9C6; padding-top:28px;">
+          <div>
+            <p style="margin:0 0 6px; font-family:Marcellus, serif; font-size:26px; color:#0F2A20;">04</p>
+            <p style="margin:0; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:#71806F;">Guests, 2 double beds</p>
+          </div>
+          <div>
+            <p style="margin:0 0 6px; font-family:Marcellus, serif; font-size:26px; color:#0F2A20;">20</p>
+            <p style="margin:0; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:#71806F;">Restaurant seats</p>
+          </div>
+          <div>
+            <p style="margin:0 0 6px; font-family:Marcellus, serif; font-size:26px; color:#0F2A20;">05</p>
+            <p style="margin:0; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:#71806F;">Guided experiences</p>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative;">
+        <img src="images/treehouse-golden.jpg" alt="The Tusker tree house in golden evening light" style="width:100%; height:clamp(340px,46vw,560px); object-fit:cover; border-radius:2px;" />
+        <div style="position:absolute; bottom:-1px; left:-1px; background:#0F2A20; color:#F7F3EA; padding:20px 26px; max-width:64%;">
+          <p style="margin:0; font-family:Marcellus, serif; font-size:19px; line-height:1.4;">Built into a living tree, not around it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stay" data-screen-label="Stay" style="background:#08180F; color:#F7F3EA; padding:clamp(64px,8vw,120px) 22px;">
+    <div style="max-width:1240px; margin:0 auto;">
+      <p style="margin:0 0 16px; font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:#C0913F;">The Stay</p>
+      <h2 style="margin:0 0 46px; font-family:Marcellus, serif; font-weight:400; font-size:clamp(30px,4vw,50px); line-height:1.12; max-width:24ch;">One tree house. The whole forest to yourself.</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(330px,1fr)); gap:clamp(28px,4vw,56px); align-items:stretch;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; min-height:clamp(320px,44vw,520px);">
+          <img src="images/treehouse-stairs.jpg" alt="Steel stair leading up to the tree house deck" style="width:100%; height:100%; min-height:160px; object-fit:cover; grid-row:span 2;" />
+          <img src="images/treehouse-balcony.jpg" alt="Timber deck and branch railing" style="width:100%; height:100%; min-height:120px; object-fit:cover;" />
+          <img src="images/treehouse-timber.jpg" alt="Polished timber wall and woven palm roof" style="width:100%; height:100%; min-height:120px; object-fit:cover;" />
+        </div>
+        <div style="background:#0F2A20; padding:clamp(28px,3.4vw,44px); display:flex; flex-direction:column; gap:22px;">
+          <div>
+            <p style="margin:0 0 10px; display:inline-block; background:#C0913F; color:#0B1A12; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; padding:6px 12px;">Our only unit</p>
+            <h3 style="margin:0 0 12px; font-family:Marcellus, serif; font-weight:400; font-size:clamp(24px,2.6vw,32px);">The Tusker Tree House</h3>
+            <p style="margin:0; color:#B4C5B9; font-size:16px; line-height:1.7; text-wrap:pretty;">A raised timber room with an open deck, branch railings and a palm-thatch roof. Sleeps four in two double beds, with the forest on every side.</p>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px,1fr)); gap:18px; border-top:1px solid rgba(247,243,234,0.14); border-bottom:1px solid rgba(247,243,234,0.14); padding:22px 0;">
+            <div><p style="margin:0 0 4px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#7E9488;">Beds</p><p style="margin:0; font-size:15px;">2 double beds</p></div>
+            <div><p style="margin:0 0 4px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#7E9488;">Max guests</p><p style="margin:0; font-size:15px;">4 guests</p></div>
+            <div><p style="margin:0 0 4px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#7E9488;">Setting</p><p style="margin:0; font-size:15px;">Raised tree house</p></div>
+            <div><p style="margin:0 0 4px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#7E9488;">Deck</p><p style="margin:0; font-size:15px;">Private, canopy level</p></div>
+          </div>
+          <ul style="margin:0; padding:0; list-style:none; display:grid; gap:12px; color:#D6E0D8; font-size:15px;">
+            <li>Hand-built timber room with palm-thatch roof</li>
+            <li>Private open-air deck above the ground</li>
+            <li>Meals served in the restaurant below</li>
+            <li>Village experiences arranged from the property</li>
+          </ul>
+          <a href="#booking" style="margin-top:auto; align-self:flex-start; background:#C0913F; color:#0B1A12; padding:15px 28px; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; font-weight:600;" style-hover="background:#F7F3EA;">Enquire about dates</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="packages" data-screen-label="Packages" style="background:#F7F3EA; padding:clamp(64px,8vw,120px) 22px;">
+    <div style="max-width:1240px; margin:0 auto;">
+      <p style="margin:0 0 16px; font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:#C0913F;">Packages</p>
+      <h2 style="margin:0 0 12px; font-family:Marcellus, serif; font-weight:400; font-size:clamp(30px,4vw,50px); line-height:1.12; color:#0F2A20; max-width:26ch;">Choose the plan that suits your trip.</h2>
+      <p style="margin:0 0 44px; color:#5B6A61; font-size:16px; max-width:60ch; text-wrap:pretty;">Every plan is priced for your dates and group size. Send us an enquiry and we confirm the rate on WhatsApp within the day.</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,280px),1fr)); gap:18px;">
+        <div style="background:#FFFDF8; border:1px solid #E2D9C6; padding:clamp(22px,3vw,30px);" style-hover="border-color:#C0913F;">
+          <p style="margin:0 0 14px; font-family:Marcellus, serif; font-size:22px; color:#0F2A20;">Tree House Only</p>
+          <p style="margin:0 0 18px; color:#5B6A61; font-size:15px; line-height:1.7;">The tree house for the night, nothing else arranged.</p>
+          <p style="margin:0 0 22px; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:#C0913F;">Rate on WhatsApp</p>
+          <a href="#booking" style="font-size:13px; letter-spacing:0.12em; text-transform:uppercase; border-bottom:1px solid #C0913F; padding-bottom:3px;">Request</a>
+        </div>
+        <div style="background:#FFFDF8; border:1px solid #E2D9C6; padding:30px;" style-hover="border-color:#C0913F;">
+          <p style="margin:0 0 14px; font-family:Marcellus, serif; font-size:22px; color:#0F2A20;">Day Out</p>
+          <p style="margin:0 0 18px; color:#5B6A61; font-size:15px; line-height:1.7;">Daytime access to the deck and restaurant with a village lunch.</p>
+          <p style="margin:0 0 22px; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:#C0913F;">Rate on WhatsApp</p>
+          <a href="#booking" style="font-size:13px; letter-spacing:0.12em; text-transform:uppercase; border-bottom:1px solid #C0913F; padding-bottom:3px;">Request</a>
+        </div>
+        <div style="background:#FFFDF8; border:1px solid #E2D9C6; padding:30px;" style-hover="border-color:#C0913F;">
+          <p style="margin:0 0 14px; font-family:Marcellus, serif; font-size:22px; color:#0F2A20;">BB</p>
+          <p style="margin:0 0 18px; color:#5B6A61; font-size:15px; line-height:1.7;">Stay with breakfast — fresh fruit, hoppers and tea on the deck.</p>
+          <p style="margin:0 0 22px; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:#C0913F;">Rate on WhatsApp</p>
+          <a href="#booking" style="font-size:13px; letter-spacing:0.12em; text-transform:uppercase; border-bottom:1px solid #C0913F; padding-bottom:3px;">Request</a>
+        </div>
+        <div style="background:#0F2A20; border:1px solid #0F2A20; padding:30px; color:#F7F3EA;">
+          <p style="margin:0 0 14px; display:inline-block; background:#C0913F; color:#0B1A12; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; padding:5px 10px;">Most booked</p>
+          <p style="margin:0 0 14px; font-family:Marcellus, serif; font-size:22px;">HB</p>
+          <p style="margin:0 0 18px; color:#B4C5B9; font-size:15px; line-height:1.7;">Half board — breakfast and a plated village dinner.</p>
+          <p style="margin:0 0 22px; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:#C0913F;">Rate on WhatsApp</p>
+          <a href="#booking" style="font-size:13px; letter-spacing:0.12em; text-transform:uppercase; border-bottom:1px solid #C0913F; padding-bottom:3px;">Request</a>
+        </div>
+        <div style="background:#FFFDF8; border:1px solid #E2D9C6; padding:30px;" style-hover="border-color:#C0913F;">
+          <p style="margin:0 0 14px; font-family:Marcellus, serif; font-size:22px; color:#0F2A20;">FB</p>
+          <p style="margin:0 0 18px; color:#5B6A61; font-size:15px; line-height:1.7;">Full board — all three meals, cooked and served on the property.</p>
+          <p style="margin:0 0 22px; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:#C0913F;">Rate on WhatsApp</p>
+          <a href="#booking" style="font-size:13px; letter-spacing:0.12em; text-transform:uppercase; border-bottom:1px solid #C0913F; padding-bottom:3px;">Request</a>
+        </div>
+        <div style="background:#FFFDF8; border:1px solid #E2D9C6; padding:30px;" style-hover="border-color:#C0913F;">
+          <p style="margin:0 0 14px; font-family:Marcellus, serif; font-size:22px; color:#0F2A20;">Cookery Class</p>
+          <p style="margin:0 0 18px; color:#5B6A61; font-size:15px; line-height:1.7;">Live village cooking class with our chef, then eat what you made.</p>
+          <p style="margin:0 0 22px; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:#C0913F;">Rate on WhatsApp</p>
+          <a href="#booking" style="font-size:13px; letter-spacing:0.12em; text-transform:uppercase; border-bottom:1px solid #C0913F; padding-bottom:3px;">Request</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="restaurant" data-screen-label="Restaurant" style="background:#08180F; color:#F7F3EA; padding:clamp(64px,8vw,120px) 22px;">
+    <div style="max-width:1240px; margin:0 auto;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:clamp(28px,5vw,64px); align-items:end; margin-bottom:52px;">
+        <div>
+          <p style="margin:0 0 16px; font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:#C0913F;">The Restaurant</p>
+          <h2 style="margin:0; font-family:Marcellus, serif; font-weight:400; font-size:clamp(30px,4vw,50px); line-height:1.12; max-width:22ch;">Village recipes, plated like fine dining.</h2>
+        </div>
+        <p style="margin:0; color:#B4C5B9; font-size:17px; line-height:1.75; text-wrap:pretty;">Twenty seats, one kitchen, and cooking that comes straight out of the village: butterfly-pea rice, jackfruit, coconut sambol, curry leaf and clay-pot spice. Our chef plates every dish by hand.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,240px),1fr)); gap:14px;">
+        <figure style="margin:0;">
+          <img src="images/food-platter.jpg" alt="Village sharing platter with butterfly-pea rice and curries" style="width:100%; height:270px; object-fit:cover;" />
+          <figcaption style="padding:14px 0 0; font-size:15px; color:#D6E0D8;">Village sharing platter <span style="color:#7E9488;">— butterfly-pea rice, jackfruit, sambol</span></figcaption>
+        </figure>
+        <figure style="margin:0;">
+          <img src="images/food-octopus.jpg" alt="Octopus and mango salad in a crisp string hopper nest" style="width:100%; height:270px; object-fit:cover;" />
+          <figcaption style="padding:14px 0 0; font-size:15px; color:#D6E0D8;">Octopus &amp; mango <span style="color:#7E9488;">— crisp string-hopper nest</span></figcaption>
+        </figure>
+        <figure style="margin:0;">
+          <img src="images/food-hoppers.jpg" alt="Pol roti rounds topped with quail egg and greens" style="width:100%; height:270px; object-fit:cover;" />
+          <figcaption style="padding:14px 0 0; font-size:15px; color:#D6E0D8;">Pol roti bites <span style="color:#7E9488;">— quail egg, greens, chilli glaze</span></figcaption>
+        </figure>
+        <figure style="margin:0;">
+          <img src="images/food-soup.jpg" alt="Roasted coconut soup with quail eggs" style="width:100%; height:270px; object-fit:cover;" />
+          <figcaption style="padding:14px 0 0; font-size:15px; color:#D6E0D8;">Roasted coconut soup <span style="color:#7E9488;">— quail egg, lotus crisp</span></figcaption>
+        </figure>
+        <figure style="margin:0;">
+          <img src="images/food-chicken.jpg" alt="Village chicken with pandan rice and tempered vegetables" style="width:100%; height:270px; object-fit:cover;" />
+          <figcaption style="padding:14px 0 0; font-size:15px; color:#D6E0D8;">Village chicken <span style="color:#7E9488;">— pandan rice, tempered greens</span></figcaption>
+        </figure>
+        <figure style="margin:0;">
+          <img src="images/food-cutlets.jpg" alt="Spiced fish cutlets served in a coconut shell" style="width:100%; height:270px; object-fit:cover;" />
+          <figcaption style="padding:14px 0 0; font-size:15px; color:#D6E0D8;">Coconut-shell cutlets <span style="color:#7E9488;">— tamarind, fried garlic</span></figcaption>
+        </figure>
+        <figure style="margin:0;">
+          <img src="images/food-main.jpg" alt="Chef plated main course with green rice and lentils" style="width:100%; height:270px; object-fit:cover;" />
+          <figcaption style="padding:14px 0 0; font-size:15px; color:#D6E0D8;">Chef's plate <span style="color:#7E9488;">— five tastes of the village</span></figcaption>
+        </figure>
+        <figure style="margin:0;">
+          <img src="images/food-sesame.jpg" alt="Sesame jaggery sweet balls on a banana leaf" style="width:100%; height:270px; object-fit:cover;" />
+          <figcaption style="padding:14px 0 0; font-size:15px; color:#D6E0D8;">Sesame &amp; jaggery <span style="color:#7E9488;">— sweet to finish</span></figcaption>
+        </figure>
+      </div>
+      <div style="margin-top:34px; display:flex; gap:20px; flex-wrap:wrap; align-items:center; border-top:1px solid rgba(247,243,234,0.14); padding-top:28px;">
+        <p style="margin:0; color:#7E9488; font-size:14px; max-width:56ch;">Please share meal requests before arrival — everything is cooked to order for the guests we have that day.</p>
+        <a href="{{ waHref }}" target="_blank" rel="noopener" style="margin-left:auto; border:1px solid #C0913F; color:#C0913F; padding:14px 26px; font-size:13px; letter-spacing:0.14em; text-transform:uppercase;" style-hover="background:#C0913F; color:#0B1A12;">Reserve a table</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="experiences" data-screen-label="Experiences" style="background:#F7F3EA; padding:clamp(64px,8vw,120px) 22px;">
+    <div style="max-width:1240px; margin:0 auto;">
+      <p style="margin:0 0 16px; font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:#C0913F;">Experiences</p>
+      <h2 style="margin:0 0 46px; font-family:Marcellus, serif; font-weight:400; font-size:clamp(30px,4vw,50px); line-height:1.12; color:#0F2A20; max-width:24ch;">Five things we arrange ourselves.</h2>
+      <div style="display:grid; gap:0; border-top:1px solid #E2D9C6;">
+        <div style="display:grid; grid-template-columns:auto 1fr; gap:clamp(20px,4vw,56px); padding:30px 0; border-bottom:1px solid #E2D9C6; align-items:baseline;" style-hover="background:#FFFDF8;">
+          <span style="font-family:Marcellus, serif; font-size:clamp(22px,2.4vw,30px); color:#C0913F;">01</span>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:16px 40px; align-items:baseline;">
+            <h3 style="margin:0; font-family:Marcellus, serif; font-weight:400; font-size:clamp(21px,2.2vw,28px); color:#0F2A20;">Boat Tour</h3>
+            <p style="margin:0; color:#5B6A61; font-size:16px; line-height:1.7; text-wrap:pretty;">A slow ride out on the water — best at first light, when the birds are still feeding along the bank.</p>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:auto 1fr; gap:clamp(20px,4vw,56px); padding:30px 0; border-bottom:1px solid #E2D9C6; align-items:baseline;" style-hover="background:#FFFDF8;">
+          <span style="font-family:Marcellus, serif; font-size:clamp(22px,2.4vw,30px); color:#C0913F;">02</span>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:16px 40px; align-items:baseline;">
+            <h3 style="margin:0; font-family:Marcellus, serif; font-weight:400; font-size:clamp(21px,2.2vw,28px); color:#0F2A20;">Handmade Batik</h3>
+            <p style="margin:0; color:#5B6A61; font-size:16px; line-height:1.7; text-wrap:pretty;">Sit with a batik artist, draw with hot wax and dye your own cloth to take home.</p>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:auto 1fr; gap:clamp(20px,4vw,56px); padding:30px 0; border-bottom:1px solid #E2D9C6; align-items:baseline;" style-hover="background:#FFFDF8;">
+          <span style="font-family:Marcellus, serif; font-size:clamp(22px,2.4vw,30px); color:#C0913F;">03</span>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:16px 40px; align-items:baseline;">
+            <h3 style="margin:0; font-family:Marcellus, serif; font-weight:400; font-size:clamp(21px,2.2vw,28px); color:#0F2A20;">Village Tour</h3>
+            <p style="margin:0; color:#5B6A61; font-size:16px; line-height:1.7; text-wrap:pretty;">Walk the paddy paths with a local guide: home gardens, the tank bund and everyday village life.</p>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:auto 1fr; gap:clamp(20px,4vw,56px); padding:30px 0; border-bottom:1px solid #E2D9C6; align-items:baseline;" style-hover="background:#FFFDF8;">
+          <span style="font-family:Marcellus, serif; font-size:clamp(22px,2.4vw,30px); color:#C0913F;">04</span>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:16px 40px; align-items:baseline;">
+            <h3 style="margin:0; font-family:Marcellus, serif; font-weight:400; font-size:clamp(21px,2.2vw,28px); color:#0F2A20;">Live Cooking &amp; Cookery Class</h3>
+            <p style="margin:0; color:#5B6A61; font-size:16px; line-height:1.7; text-wrap:pretty;">Grind the spices, temper the coconut oil, cook village food on a clay hearth — then sit down and eat it.</p>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:auto 1fr; gap:clamp(20px,4vw,56px); padding:30px 0; border-bottom:1px solid #E2D9C6; align-items:baseline;" style-hover="background:#FFFDF8;">
+          <span style="font-family:Marcellus, serif; font-size:clamp(22px,2.4vw,30px); color:#C0913F;">05</span>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:16px 40px; align-items:baseline;">
+            <h3 style="margin:0; font-family:Marcellus, serif; font-weight:400; font-size:clamp(21px,2.2vw,28px); color:#0F2A20;">Bicycle Tour</h3>
+            <p style="margin:0; color:#5B6A61; font-size:16px; line-height:1.7; text-wrap:pretty;">Bicycles for the back roads — flat, shaded lanes past tanks, fields and small temples.</p>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:44px; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:14px;">
+        <img src="images/cooking-class.jpg" alt="Chef plating village dishes during a live cooking class" style="width:100%; height:300px; object-fit:cover;" />
+        <img src="images/food-village.jpg" alt="Village plate with green rice and vegetable curries" style="width:100%; height:300px; object-fit:cover;" />
+        <img src="images/food-egg.jpg" alt="Egg hopper dish with tomato salad" style="width:100%; height:300px; object-fit:cover;" />
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" data-screen-label="Gallery" style="background:#0F2A20; color:#F7F3EA; padding:clamp(64px,8vw,120px) 22px;">
+    <div style="max-width:1240px; margin:0 auto;">
+      <p style="margin:0 0 16px; font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:#C0913F;">Gallery</p>
+      <h2 style="margin:0 0 46px; font-family:Marcellus, serif; font-weight:400; font-size:clamp(30px,4vw,50px); line-height:1.12; max-width:22ch;">The tree house, as it stands today.</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,260px),1fr)); gap:12px;">
+        <img src="images/treehouse-full.jpg" alt="Full view of the tree house and stair" style="width:100%; height:380px; object-fit:cover;" />
+        <img src="images/treehouse-roof.jpg" alt="Woven palm roof detail over the deck" style="width:100%; height:380px; object-fit:cover;" />
+        <img src="images/treehouse-railing.jpg" alt="Branch railing along the deck" style="width:100%; height:380px; object-fit:cover;" />
+        <img src="images/treehouse-balcony.jpg" alt="Deck entrance framed by branches" style="width:100%; height:380px; object-fit:cover;" />
+        <img src="images/hero-night.jpg" alt="Tree house glowing at night in the mist" style="width:100%; height:380px; object-fit:cover;" />
+        <img src="images/treehouse-golden.jpg" alt="Tree house in golden evening light" style="width:100%; height:380px; object-fit:cover;" />
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Location and policies" style="background:#F7F3EA; padding:clamp(64px,8vw,120px) 22px;">
+    <div style="max-width:1240px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:clamp(32px,5vw,72px);">
+      <div>
+        <p style="margin:0 0 16px; font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:#C0913F;">Getting here</p>
+        <h2 style="margin:0 0 22px; font-family:Marcellus, serif; font-weight:400; font-size:clamp(28px,3.4vw,42px); line-height:1.14; color:#0F2A20;">{{ locationLine }}</h2>
+        <p style="margin:0 0 26px; color:#5B6A61; font-size:16px; line-height:1.75; text-wrap:pretty;">Full arrival directions and a pin are sent with your booking confirmation. Ask us about a tuk-tuk or airport transfer when you enquire.</p>
+        <a href="{{ mapHref }}" target="_blank" rel="noopener" style="display:inline-block; border:1px solid #0F2A20; color:#0F2A20; padding:14px 26px; font-size:13px; letter-spacing:0.14em; text-transform:uppercase;" style-hover="background:#0F2A20; color:#F7F3EA;">Open in Google Maps</a>
+      </div>
+      <div>
+        <p style="margin:0 0 16px; font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:#C0913F;">Good to know</p>
+        <div style="display:grid; gap:0; border-top:1px solid #E2D9C6;">
+          <div style="padding:20px 0; border-bottom:1px solid #E2D9C6; display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap;">
+            <span style="font-size:15px; color:#0F2A20;">Check-in</span><span style="font-size:15px; color:#5B6A61;">2:00 PM</span>
+          </div>
+          <div style="padding:20px 0; border-bottom:1px solid #E2D9C6; display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap;">
+            <span style="font-size:15px; color:#0F2A20;">Check-out</span><span style="font-size:15px; color:#5B6A61;">12:00 PM</span>
+          </div>
+          <div style="padding:20px 0; border-bottom:1px solid #E2D9C6; display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap;">
+            <span style="font-size:15px; color:#0F2A20;">Reservations</span><span style="font-size:15px; color:#5B6A61;">Advance booking required</span>
+          </div>
+          <div style="padding:20px 0; border-bottom:1px solid #E2D9C6; display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap;">
+            <span style="font-size:15px; color:#0F2A20;">Meals</span><span style="font-size:15px; color:#5B6A61;">Requests before arrival</span>
+          </div>
+          <div style="padding:20px 0; border-bottom:1px solid #E2D9C6; display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap;">
+            <span style="font-size:15px; color:#0F2A20;">Capacity</span><span style="font-size:15px; color:#5B6A61;">4 guests · 20 restaurant seats</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" data-screen-label="Contact" style="background:#08180F; color:#F7F3EA; padding:clamp(64px,8vw,110px) 22px;">
+    <div style="max-width:1240px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:clamp(32px,5vw,72px); align-items:start;">
+      <div>
+        <p style="margin:0 0 16px; font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:#C0913F;">Contact</p>
+        <h2 style="margin:0 0 22px; font-family:Marcellus, serif; font-weight:400; font-size:clamp(30px,4vw,48px); line-height:1.12; max-width:20ch;">Book direct. Talk to us on WhatsApp.</h2>
+        <p style="margin:0 0 30px; color:#B4C5B9; font-size:17px; line-height:1.75; max-width:52ch; text-wrap:pretty;">Send your dates, the number of guests and what you would like to do — we reply with the rate and hold the tree house for you.</p>
+        <a href="{{ waHref }}" target="_blank" rel="noopener" style="display:inline-block; background:#C0913F; color:#0B1A12; padding:16px 32px; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; font-weight:600;" style-hover="background:#F7F3EA;">Message on WhatsApp</a>
+      </div>
+      <div style="display:grid; gap:18px;">
+        <div style="border:1px solid rgba(247,243,234,0.18); padding:22px 24px;">
+          <p style="margin:0 0 6px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#7E9488;">WhatsApp / Phone</p>
+          <p style="margin:0; font-size:19px; font-family:Marcellus, serif;">{{ phoneDisplay }}</p>
+        </div>
+        <div style="border:1px solid rgba(247,243,234,0.18); padding:22px 24px;">
+          <p style="margin:0 0 6px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#7E9488;">Email</p>
+          <p style="margin:0; font-size:clamp(16px,2.2vw,19px); font-family:Marcellus, serif; overflow-wrap:anywhere;">{{ email }}</p>
+        </div>
+        <div style="border:1px solid rgba(247,243,234,0.18); padding:22px 24px;">
+          <p style="margin:0 0 6px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#7E9488;">Where we are</p>
+          <p style="margin:0; font-size:19px; font-family:Marcellus, serif;">{{ locationLine }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#0B1A12; color:#8FA396; padding:48px 22px;">
+    <div style="max-width:1240px; margin:0 auto; display:flex; gap:28px; flex-wrap:wrap; align-items:center;">
+      <img src="images/logo.png" alt="The Tusker Resort and Restaurant" style="height:78px; width:auto; filter:invert(1); mix-blend-mode:lighten;" />
+      <p style="margin:0; font-size:14px; max-width:38ch; line-height:1.7;">Anuradhapura Road, Laksirigama, Habarana.<br />Tree house stays, village food and hand-arranged experiences.</p>
+      <p style="margin:0; font-size:14px; line-height:1.7;"><a href="tel:+94711186307">+94 71 118 6307</a><br /><a href="mailto:anjula0333@gmail.com">anjula0333@gmail.com</a></p>
+      <p style="margin:0 0 0 auto; font-size:13px;">© 2026 The Tusker Resort and Restaurant</p>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;94711186307&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;},&quot;phoneDisplay&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;+94 71 118 6307&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;},&quot;email&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;anjula0333@gmail.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;},&quot;locationLine&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Anuradhapura Road, Laksirigama, Habarana&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;},&quot;mapQuery&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Anuradhapura Road, Laksirigama, Habarana, Sri Lanka&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;}}">
+class Component extends DCLogic {
+  state = { name: "", phone: "", checkin: "", checkout: "", guests: "2", pkg: "TREE HOUSE ONLY" };
+
+  set(k) { return (e) => this.setState({ [k]: e.target.value }); }
+
+  waNumber() { return (this.props.whatsappNumber ?? "94711186307").replace(/[^0-9]/g, ""); }
+
+  link(text) { return "https://wa.me/" + this.waNumber() + "?text=" + encodeURIComponent(text); }
+
+  renderVals() {
+    const s = this.state;
+    const enquiry =
+      "Hello The Tusker Resort and Restaurant, I would like to make a booking enquiry.\n" +
+      "Name: " + (s.name || "-") + "\n" +
+      "WhatsApp: " + (s.phone || "-") + "\n" +
+      "Check-in: " + (s.checkin || "-") + "\n" +
+      "Check-out: " + (s.checkout || "-") + "\n" +
+      "Guests: " + s.guests + "\n" +
+      "Package: " + s.pkg;
+    const loc = this.props.locationLine ?? "Anuradhapura Road, Laksirigama, Habarana";
+    return {
+      name: s.name, phone: s.phone, checkin: s.checkin, checkout: s.checkout,
+      guests: s.guests, pkg: s.pkg,
+      onName: this.set("name"), onPhone: this.set("phone"),
+      onCheckin: this.set("checkin"), onCheckout: this.set("checkout"),
+      onGuests: this.set("guests"), onPkg: this.set("pkg"),
+      onSubmit: () => window.open(this.link(enquiry), "_blank", "noopener"),
+      waHref: this.link("Hello The Tusker Resort and Restaurant, I would like to make a booking enquiry."),
+      phoneDisplay: this.props.phoneDisplay ?? "+94 71 118 6307",
+      email: this.props.email ?? "anjula0333@gmail.com",
+      locationLine: loc,
+      mapHref: "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(this.props.mapQuery ?? (loc + ", Sri Lanka"))
+    };
+  }
+}
+</script>
+</body>
+</html>
