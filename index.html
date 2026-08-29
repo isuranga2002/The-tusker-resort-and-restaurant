@@ -1,8 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Tusker Resort and Restaurant | Tree House Stay in Habarana, Sri Lanka</title>
+<meta name="description" content="Book The Tusker Resort and Restaurant in Habarana, Sri Lanka for a private tree house stay, Sri Lankan village food, cooking classes, Sigiriya trips and Minneriya safari experiences.">
+<meta name="keywords" content="The Tusker Resort and Restaurant, Habarana resort, Habarana hotel, Habarana villa, tree house Sri Lanka, Sigiriya hotel, Minneriya safari, Sri Lankan cooking class, village restaurant Habarana">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#0F2A20">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Tusker Resort and Restaurant | Habarana Tree House Stay">
+<meta property="og:description" content="A private tree house, village restaurant, cooking class and nearby Sigiriya and Minneriya travel experiences in Habarana, Sri Lanka.">
+<meta property="og:image" content="images/hero-night.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="geo.region" content="LK-71">
+<meta name="geo.placename" content="Habarana, North Central Province, Sri Lanka">
+<meta name="geo.position" content="8.0363;80.7467">
+<meta name="ICBM" content="8.0363, 80.7467">
+<meta name="author" content="The Tusker Resort and Restaurant">
+<link rel="icon" href="images/logo.png" type="image/png">
+<link rel="apple-touch-icon" href="images/logo.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preload" as="image" href="images/hero-night.jpg" fetchpriority="high">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -20,23 +39,157 @@
   a { color: #C0913F; text-decoration: none; }
   a:hover { color: #8F6A28; }
   @keyframes tuskFade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  #home {
+    overflow:hidden;
+    background-image:linear-gradient(180deg, rgba(8,24,15,0.55) 0%, rgba(8,24,15,0.25) 40%, rgba(8,24,15,0.92) 100%), url('images/hero-night.jpg') !important;
+    background-size:cover !important;
+    background-position:center !important;
+    background-color:#08180F !important;
+  }
+  #home::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+    background:linear-gradient(180deg, rgba(8,24,15,0.56) 0%, rgba(8,24,15,0.28) 42%, rgba(8,24,15,0.93) 100%);
+    pointer-events:none;
+  }
+  #home > div { position:relative; z-index:2; }
+  .site-header { box-shadow:0 12px 30px rgba(15,42,32,0.06); }
+  .site-header-inner { min-height:76px; display:flex !important; align-items:center !important; justify-content:center !important; }
+  .primary-nav { justify-content:center !important; flex:1 1 420px !important; max-width:620px; background:rgba(255,253,248,0.58); border:1px solid rgba(226,217,198,0.76); padding:4px 18px !important; border-radius:999px; }
+  .primary-nav a { border-bottom:1px solid transparent; transition:color .2s ease, border-color .2s ease; }
+  .primary-nav a:hover { color:#C0913F !important; border-color:#C0913F; }
+  .nav-cta { box-shadow:0 8px 22px rgba(15,42,32,0.14); }
+  .center-copy { text-align:center !important; margin-left:auto !important; margin-right:auto !important; }
+  #packages > div > p:first-child,
+  #packages > div > h2,
+  #packages > div > p:nth-child(3),
+  #experiences > div > p:first-child,
+  #experiences > div > h2,
+  #gallery > div > p:first-child,
+  #gallery > div > h2,
+  #nearby > div > div:first-child > div > p,
+  #nearby > div > div:first-child > div > h2,
+  #nearby > div > div:first-child > p,
+  #faq > div > p:first-child,
+  #faq > div > h2,
+  #faq > div > p:nth-child(3) { text-align:center !important; margin-left:auto !important; margin-right:auto !important; }
+  input, select, button { max-width:100%; }
+  section { scroll-margin-top:96px; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior:auto; }
+  }
+  @media (max-width: 760px) {
+    header > div { align-items:center !important; gap:8px !important; padding:9px 14px 12px !important; }
+    header img { height:42px !important; }
+    .site-header-inner { min-height:auto; justify-content:space-between !important; }
+    nav { flex:1 1 100% !important; order:3 !important; justify-content:center !important; overflow-x:visible !important; flex-wrap:wrap !important; gap:14px !important; padding:7px 12px !important; font-size:11px !important; border-radius:999px; max-width:none; }
+    nav a { flex:0 0 auto !important; padding:7px 0 !important; }
+    header a[target="_blank"] { margin-left:auto !important; padding:10px 14px !important; font-size:11px !important; }
+    #home { min-height:calc(100svh - 100px) !important; }
+    #home > div { padding:112px 18px 46px !important; }
+    #home h1 { font-size:clamp(38px, 13vw, 54px) !important; max-width:12ch !important; }
+    #home p { max-width:100% !important; }
+    #home a { width:100% !important; text-align:center !important; padding:14px 18px !important; }
+    #booking { padding:34px 16px !important; }
+    #booking h2 { width:100% !important; }
+    #booking label { min-width:0 !important; }
+    #booking button { width:100% !important; height:auto !important; min-height:50px !important; }
+    section { padding-left:16px !important; padding-right:16px !important; }
+    figure img, #gallery img { height:260px !important; }
+    footer > div { align-items:center !important; text-align:center !important; justify-content:center !important; }
+    footer p:last-child { margin-left:0 !important; width:100% !important; }
+  }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["Resort", "Restaurant"],
+  "@id": "#the-tusker-resort-restaurant",
+  "name": "The Tusker Resort and Restaurant",
+  "alternateName": "The Tusker Habarana",
+  "description": "Tree house stay, Sri Lankan village restaurant, cooking classes and guided travel experiences in Habarana, Sri Lanka.",
+  "image": [
+    "images/hero-night.jpg",
+    "images/treehouse-golden.jpg",
+    "images/treehouse-full.jpg",
+    "images/food-platter.jpg",
+    "images/cooking-class.jpg"
+  ],
+  "telephone": "+94711186307",
+  "email": "thetuskerresort@gmail.com",
+  "priceRange": "$$",
+  "checkinTime": "14:00:00+05:30",
+  "checkoutTime": "12:00:00+05:30",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Anuradhapura Road, Laksirigama",
+    "addressLocality": "Habarana",
+    "addressRegion": "North Central Province",
+    "addressCountry": "LK"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 8.0363,
+    "longitude": 80.7467
+  },
+  "servesCuisine": "Sri Lankan",
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Private tree house stay", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Village cooking class", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Sri Lankan restaurant", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Nearby Sigiriya and Minneriya trips", "value": true }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I confirm a booking?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Send your details through WhatsApp. The team confirms availability, rate and arrival directions directly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can meals and activities be arranged?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Share meal requests and preferred experiences before arrival so the kitchen and local guides can prepare."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this better for couples, families or small groups?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tree house works best for couples, families and small groups of up to four staying together."
+      }
+    }
+  ]
+}
+</script>
 </helmet>
 
 <div style="width:100%;">
 
-  <header style="position:sticky; top:0; z-index:50; background:rgba(247,243,234,0.94); backdrop-filter:blur(10px); border-bottom:1px solid #E2D9C6;">
-    <div style="max-width:1240px; margin:0 auto; padding:10px clamp(14px,3vw,22px); display:flex; align-items:center; gap:clamp(10px,2vw,22px); flex-wrap:wrap;">
+  <header class="site-header" style="position:sticky; top:0; z-index:50; background:rgba(247,243,234,0.94); backdrop-filter:blur(10px); border-bottom:1px solid #E2D9C6;">
+    <div class="site-header-inner" style="max-width:1240px; margin:0 auto; padding:10px clamp(14px,3vw,22px); display:flex; align-items:center; gap:clamp(10px,2vw,22px); flex-wrap:wrap;">
       <a href="#home" style="display:block; flex:0 0 auto;"><img src="images/logo.png" alt="The Tusker Resort and Restaurant" style="height:clamp(40px,7vw,54px); width:auto; mix-blend-mode:multiply;" /></a>
-      <nav style="display:flex; flex:1 1 460px; flex-wrap:wrap; justify-content:flex-end; row-gap:2px; column-gap:clamp(12px,2.2vw,26px); align-items:center; min-width:0; font-size:clamp(12px,1.1vw,14px); letter-spacing:0.08em; text-transform:uppercase; color:#2A3A31;">
+      <nav class="primary-nav" aria-label="Main navigation" style="display:flex; flex:1 1 460px; flex-wrap:wrap; justify-content:flex-end; row-gap:2px; column-gap:clamp(12px,2.2vw,26px); align-items:center; min-width:0; font-size:clamp(12px,1.1vw,14px); letter-spacing:0.08em; text-transform:uppercase; color:#2A3A31;">
         <a href="#stay" style="color:#2A3A31; padding:9px 0;">Stay</a>
         <a href="#packages" style="color:#2A3A31; padding:9px 0;">Packages</a>
         <a href="#restaurant" style="color:#2A3A31; padding:9px 0;">Restaurant</a>
         <a href="#experiences" style="color:#2A3A31; padding:9px 0;">Experiences</a>
-        <a href="#gallery" style="color:#2A3A31; padding:9px 0;">Gallery</a>
         <a href="#contact" style="color:#2A3A31; padding:9px 0;">Contact</a>
       </nav>
-      <a href="{{ waHref }}" target="_blank" rel="noopener" style="flex:0 0 auto; margin-left:auto; background:#0F2A20; color:#F7F3EA; padding:12px clamp(16px,2.4vw,24px); border-radius:2px; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; white-space:nowrap;" style-hover="background:#C0913F; color:#0F2A20;">Book Now</a>
+      <a class="nav-cta" href="{{ waHref }}" target="_blank" rel="noopener" style="flex:0 0 auto; margin-left:auto; background:#0F2A20; color:#F7F3EA; padding:12px clamp(16px,2.4vw,24px); border-radius:2px; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; white-space:nowrap;" style-hover="background:#C0913F; color:#0F2A20;">Book Now</a>
     </div>
   </header>
 
@@ -65,18 +218,47 @@
         <label style="display:flex; flex-direction:column; gap:8px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#93A79A;">WhatsApp number
           <input type="tel" value="{{ phone }}" onChange="{{ onPhone }}" placeholder="+94 ..." style="background:rgba(247,243,234,0.06); border:1px solid rgba(247,243,234,0.22); color:#F7F3EA; padding:13px 14px; font-size:15px; font-family:Karla, sans-serif; border-radius:2px;" />
         </label>
+        <label style="display:flex; flex-direction:column; gap:8px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#93A79A;">Email
+          <input type="email" value="{{ guestEmail }}" onChange="{{ onGuestEmail }}" placeholder="you@example.com" style="background:rgba(247,243,234,0.06); border:1px solid rgba(247,243,234,0.22); color:#F7F3EA; padding:13px 14px; font-size:15px; font-family:Karla, sans-serif; border-radius:2px;" />
+        </label>
+        <label style="display:flex; flex-direction:column; gap:8px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#93A79A;">ID number
+          <input type="text" value="{{ idNumber }}" onChange="{{ onIdNumber }}" placeholder="National ID" style="background:rgba(247,243,234,0.06); border:1px solid rgba(247,243,234,0.22); color:#F7F3EA; padding:13px 14px; font-size:15px; font-family:Karla, sans-serif; border-radius:2px;" />
+        </label>
+        <label style="display:flex; flex-direction:column; gap:8px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#93A79A;">Passport number
+          <input type="text" value="{{ passportNumber }}" onChange="{{ onPassportNumber }}" placeholder="Passport no." style="background:rgba(247,243,234,0.06); border:1px solid rgba(247,243,234,0.22); color:#F7F3EA; padding:13px 14px; font-size:15px; font-family:Karla, sans-serif; border-radius:2px;" />
+        </label>
+        <label style="display:flex; flex-direction:column; gap:8px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#93A79A;">City
+          <input type="text" value="{{ city }}" onChange="{{ onCity }}" placeholder="Your city" style="background:rgba(247,243,234,0.06); border:1px solid rgba(247,243,234,0.22); color:#F7F3EA; padding:13px 14px; font-size:15px; font-family:Karla, sans-serif; border-radius:2px;" />
+        </label>
+        <label style="display:flex; flex-direction:column; gap:8px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#93A79A;">Country
+          <input type="text" value="{{ country }}" onChange="{{ onCountry }}" placeholder="Your country" style="background:rgba(247,243,234,0.06); border:1px solid rgba(247,243,234,0.22); color:#F7F3EA; padding:13px 14px; font-size:15px; font-family:Karla, sans-serif; border-radius:2px;" />
+        </label>
+        <label style="display:flex; flex-direction:column; gap:8px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#93A79A;">Gender
+          <select value="{{ gender }}" onChange="{{ onGender }}" style="background:#123227; border:1px solid rgba(247,243,234,0.22); color:#F7F3EA; padding:13px 14px; font-size:15px; font-family:Karla, sans-serif; border-radius:2px;">
+            <option value="">Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other / prefer not to say">Other / prefer not to say</option>
+          </select>
+        </label>
         <label style="display:flex; flex-direction:column; gap:8px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#93A79A;">Check-in
           <input type="date" value="{{ checkin }}" onChange="{{ onCheckin }}" style="background:rgba(247,243,234,0.06); border:1px solid rgba(247,243,234,0.22); color:#F7F3EA; padding:12px 14px; font-size:15px; font-family:Karla, sans-serif; border-radius:2px;" />
         </label>
         <label style="display:flex; flex-direction:column; gap:8px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#93A79A;">Check-out
           <input type="date" value="{{ checkout }}" onChange="{{ onCheckout }}" style="background:rgba(247,243,234,0.06); border:1px solid rgba(247,243,234,0.22); color:#F7F3EA; padding:12px 14px; font-size:15px; font-family:Karla, sans-serif; border-radius:2px;" />
         </label>
-        <label style="display:flex; flex-direction:column; gap:8px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#93A79A;">Guests
-          <select value="{{ guests }}" onChange="{{ onGuests }}" style="background:#123227; border:1px solid rgba(247,243,234,0.22); color:#F7F3EA; padding:13px 14px; font-size:15px; font-family:Karla, sans-serif; border-radius:2px;">
-            <option value="1">1 guest</option>
-            <option value="2">2 guests</option>
-            <option value="3">3 guests</option>
-            <option value="4">4 guests</option>
+        <label style="display:flex; flex-direction:column; gap:8px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#93A79A;">How many members
+          <select value="{{ members }}" onChange="{{ onMembers }}" style="background:#123227; border:1px solid rgba(247,243,234,0.22); color:#F7F3EA; padding:13px 14px; font-size:15px; font-family:Karla, sans-serif; border-radius:2px;">
+            <option value="1">1 member</option>
+            <option value="2">2 members</option>
+            <option value="3">3 members</option>
+            <option value="4">4 members</option>
+            <option value="5">5 members</option>
+            <option value="6">6 members</option>
+            <option value="7">7 members</option>
+            <option value="8">8 members</option>
+            <option value="9">9 members</option>
+            <option value="10+">10+ members</option>
           </select>
         </label>
         <label style="display:flex; flex-direction:column; gap:8px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#93A79A;">Package
@@ -118,7 +300,7 @@
         </div>
       </div>
       <div style="position:relative;">
-        <img src="images/treehouse-golden.jpg" alt="The Tusker tree house in golden evening light" style="width:100%; height:clamp(340px,46vw,560px); object-fit:cover; border-radius:2px;" />
+        <img src="images/treehouse-golden.jpg" alt="The Tusker tree house in golden evening light" loading="lazy" decoding="async" style="width:100%; height:clamp(340px,46vw,560px); object-fit:cover; border-radius:2px;" />
         <div style="position:absolute; bottom:-1px; left:-1px; background:#0F2A20; color:#F7F3EA; padding:20px 26px; max-width:64%;">
           <p style="margin:0; font-family:Marcellus, serif; font-size:19px; line-height:1.4;">Built into a living tree, not around it.</p>
         </div>
@@ -132,9 +314,9 @@
       <h2 style="margin:0 0 46px; font-family:Marcellus, serif; font-weight:400; font-size:clamp(30px,4vw,50px); line-height:1.12; max-width:24ch;">One tree house. The whole forest to yourself.</h2>
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(330px,1fr)); gap:clamp(28px,4vw,56px); align-items:stretch;">
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; min-height:clamp(320px,44vw,520px);">
-          <img src="images/treehouse-stairs.jpg" alt="Steel stair leading up to the tree house deck" style="width:100%; height:100%; min-height:160px; object-fit:cover; grid-row:span 2;" />
-          <img src="images/treehouse-balcony.jpg" alt="Timber deck and branch railing" style="width:100%; height:100%; min-height:120px; object-fit:cover;" />
-          <img src="images/treehouse-timber.jpg" alt="Polished timber wall and woven palm roof" style="width:100%; height:100%; min-height:120px; object-fit:cover;" />
+          <img src="images/treehouse-stairs.jpg" alt="Steel stair leading up to the tree house deck" loading="lazy" decoding="async" style="width:100%; height:100%; min-height:160px; object-fit:cover; grid-row:span 2;" />
+          <img src="images/treehouse-balcony.jpg" alt="Timber deck and branch railing" loading="lazy" decoding="async" style="width:100%; height:100%; min-height:120px; object-fit:cover;" />
+          <img src="images/treehouse-timber.jpg" alt="Polished timber wall and woven palm roof" loading="lazy" decoding="async" style="width:100%; height:100%; min-height:120px; object-fit:cover;" />
         </div>
         <div style="background:#0F2A20; padding:clamp(28px,3.4vw,44px); display:flex; flex-direction:column; gap:22px;">
           <div>
@@ -218,35 +400,35 @@
       </div>
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,240px),1fr)); gap:14px;">
         <figure style="margin:0;">
-          <img src="images/food-platter.jpg" alt="Village sharing platter with butterfly-pea rice and curries" style="width:100%; height:270px; object-fit:cover;" />
+          <img src="images/food-platter.jpg" alt="Village sharing platter with butterfly-pea rice and curries" loading="lazy" decoding="async" style="width:100%; height:270px; object-fit:cover;" />
           <figcaption style="padding:14px 0 0; font-size:15px; color:#D6E0D8;">Village sharing platter <span style="color:#7E9488;">— butterfly-pea rice, jackfruit, sambol</span></figcaption>
         </figure>
         <figure style="margin:0;">
-          <img src="images/food-octopus.jpg" alt="Octopus and mango salad in a crisp string hopper nest" style="width:100%; height:270px; object-fit:cover;" />
+          <img src="images/food-octopus.jpg" alt="Octopus and mango salad in a crisp string hopper nest" loading="lazy" decoding="async" style="width:100%; height:270px; object-fit:cover;" />
           <figcaption style="padding:14px 0 0; font-size:15px; color:#D6E0D8;">Octopus &amp; mango <span style="color:#7E9488;">— crisp string-hopper nest</span></figcaption>
         </figure>
         <figure style="margin:0;">
-          <img src="images/food-hoppers.jpg" alt="Pol roti rounds topped with quail egg and greens" style="width:100%; height:270px; object-fit:cover;" />
+          <img src="images/food-hoppers.jpg" alt="Pol roti rounds topped with quail egg and greens" loading="lazy" decoding="async" style="width:100%; height:270px; object-fit:cover;" />
           <figcaption style="padding:14px 0 0; font-size:15px; color:#D6E0D8;">Pol roti bites <span style="color:#7E9488;">— quail egg, greens, chilli glaze</span></figcaption>
         </figure>
         <figure style="margin:0;">
-          <img src="images/food-soup.jpg" alt="Roasted coconut soup with quail eggs" style="width:100%; height:270px; object-fit:cover;" />
+          <img src="images/food-soup.jpg" alt="Roasted coconut soup with quail eggs" loading="lazy" decoding="async" style="width:100%; height:270px; object-fit:cover;" />
           <figcaption style="padding:14px 0 0; font-size:15px; color:#D6E0D8;">Roasted coconut soup <span style="color:#7E9488;">— quail egg, lotus crisp</span></figcaption>
         </figure>
         <figure style="margin:0;">
-          <img src="images/food-chicken.jpg" alt="Village chicken with pandan rice and tempered vegetables" style="width:100%; height:270px; object-fit:cover;" />
+          <img src="images/food-chicken.jpg" alt="Village chicken with pandan rice and tempered vegetables" loading="lazy" decoding="async" style="width:100%; height:270px; object-fit:cover;" />
           <figcaption style="padding:14px 0 0; font-size:15px; color:#D6E0D8;">Village chicken <span style="color:#7E9488;">— pandan rice, tempered greens</span></figcaption>
         </figure>
         <figure style="margin:0;">
-          <img src="images/food-cutlets.jpg" alt="Spiced fish cutlets served in a coconut shell" style="width:100%; height:270px; object-fit:cover;" />
+          <img src="images/food-cutlets.jpg" alt="Spiced fish cutlets served in a coconut shell" loading="lazy" decoding="async" style="width:100%; height:270px; object-fit:cover;" />
           <figcaption style="padding:14px 0 0; font-size:15px; color:#D6E0D8;">Coconut-shell cutlets <span style="color:#7E9488;">— tamarind, fried garlic</span></figcaption>
         </figure>
         <figure style="margin:0;">
-          <img src="images/food-main.jpg" alt="Chef plated main course with green rice and lentils" style="width:100%; height:270px; object-fit:cover;" />
+          <img src="images/food-main.jpg" alt="Chef plated main course with green rice and lentils" loading="lazy" decoding="async" style="width:100%; height:270px; object-fit:cover;" />
           <figcaption style="padding:14px 0 0; font-size:15px; color:#D6E0D8;">Chef's plate <span style="color:#7E9488;">— five tastes of the village</span></figcaption>
         </figure>
         <figure style="margin:0;">
-          <img src="images/food-sesame.jpg" alt="Sesame jaggery sweet balls on a banana leaf" style="width:100%; height:270px; object-fit:cover;" />
+          <img src="images/food-sesame.jpg" alt="Sesame jaggery sweet balls on a banana leaf" loading="lazy" decoding="async" style="width:100%; height:270px; object-fit:cover;" />
           <figcaption style="padding:14px 0 0; font-size:15px; color:#D6E0D8;">Sesame &amp; jaggery <span style="color:#7E9488;">— sweet to finish</span></figcaption>
         </figure>
       </div>
@@ -299,9 +481,9 @@
         </div>
       </div>
       <div style="margin-top:44px; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:14px;">
-        <img src="images/cooking-class.jpg" alt="Chef plating village dishes during a live cooking class" style="width:100%; height:300px; object-fit:cover;" />
-        <img src="images/food-village.jpg" alt="Village plate with green rice and vegetable curries" style="width:100%; height:300px; object-fit:cover;" />
-        <img src="images/food-egg.jpg" alt="Egg hopper dish with tomato salad" style="width:100%; height:300px; object-fit:cover;" />
+        <img src="images/cooking-class.jpg" alt="Chef plating village dishes during a live cooking class" loading="lazy" decoding="async" style="width:100%; height:300px; object-fit:cover;" />
+        <img src="images/food-village.jpg" alt="Village plate with green rice and vegetable curries" loading="lazy" decoding="async" style="width:100%; height:300px; object-fit:cover;" />
+        <img src="images/food-egg.jpg" alt="Egg hopper dish with tomato salad" loading="lazy" decoding="async" style="width:100%; height:300px; object-fit:cover;" />
       </div>
     </div>
   </section>
@@ -311,12 +493,42 @@
       <p style="margin:0 0 16px; font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:#C0913F;">Gallery</p>
       <h2 style="margin:0 0 46px; font-family:Marcellus, serif; font-weight:400; font-size:clamp(30px,4vw,50px); line-height:1.12; max-width:22ch;">The tree house, as it stands today.</h2>
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,260px),1fr)); gap:12px;">
-        <img src="images/treehouse-full.jpg" alt="Full view of the tree house and stair" style="width:100%; height:380px; object-fit:cover;" />
-        <img src="images/treehouse-roof.jpg" alt="Woven palm roof detail over the deck" style="width:100%; height:380px; object-fit:cover;" />
-        <img src="images/treehouse-railing.jpg" alt="Branch railing along the deck" style="width:100%; height:380px; object-fit:cover;" />
-        <img src="images/treehouse-balcony.jpg" alt="Deck entrance framed by branches" style="width:100%; height:380px; object-fit:cover;" />
-        <img src="images/hero-night.jpg" alt="Tree house glowing at night in the mist" style="width:100%; height:380px; object-fit:cover;" />
-        <img src="images/treehouse-golden.jpg" alt="Tree house in golden evening light" style="width:100%; height:380px; object-fit:cover;" />
+        <img src="images/treehouse-full.jpg" alt="Full view of the tree house and stair" loading="lazy" decoding="async" style="width:100%; height:380px; object-fit:cover;" />
+        <img src="images/treehouse-roof.jpg" alt="Woven palm roof detail over the deck" loading="lazy" decoding="async" style="width:100%; height:380px; object-fit:cover;" />
+        <img src="images/treehouse-railing.jpg" alt="Branch railing along the deck" loading="lazy" decoding="async" style="width:100%; height:380px; object-fit:cover;" />
+        <img src="images/treehouse-balcony.jpg" alt="Deck entrance framed by branches" loading="lazy" decoding="async" style="width:100%; height:380px; object-fit:cover;" />
+        <img src="images/hero-night.jpg" alt="Tree house glowing at night in the mist" loading="lazy" decoding="async" style="width:100%; height:380px; object-fit:cover;" />
+        <img src="images/treehouse-golden.jpg" alt="Tree house in golden evening light" loading="lazy" decoding="async" style="width:100%; height:380px; object-fit:cover;" />
+      </div>
+    </div>
+  </section>
+
+  <section id="nearby" data-screen-label="Nearby travel" style="background:#FFFDF8; padding:clamp(64px,8vw,120px) 22px;">
+    <div style="max-width:1240px; margin:0 auto;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:clamp(24px,4vw,56px); align-items:end; margin-bottom:42px;">
+        <div>
+          <p style="margin:0 0 16px; font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:#C0913F;">Nearby from Habarana</p>
+          <h2 style="margin:0; font-family:Marcellus, serif; font-weight:400; font-size:clamp(30px,4vw,50px); line-height:1.12; color:#0F2A20; max-width:24ch;">Stay close to Sigiriya, village tours and elephant country.</h2>
+        </div>
+        <p style="margin:0; color:#5B6A61; font-size:17px; line-height:1.75; text-wrap:pretty;">The Tusker is positioned for travellers who want a quiet Habarana base with easy access to Sigiriya Rock Fortress, Minneriya National Park, rural village tours and hands-on Sri Lankan cooking.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,250px),1fr)); gap:16px;">
+        <figure style="margin:0; background:#F7F3EA; border:1px solid #E2D9C6;">
+          <img src="https://cdn.getyourguide.com/image/format%3Dauto%2Cfit%3Dcrop%2Cgravity%3Dauto%2Cquality%3D60%2Cwidth%3D620%2Cheight%3D400%2Cdpr%3D1/tour_img/b5297a24a593e0d2b099e23004e16f7c7713674b578be3fc7b33f04bf74e6f2c.jpeg" alt="Travellers preparing herbs during a Sri Lankan cooking class near Sigiriya" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:280px; object-fit:cover;" />
+          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Cooking class near Sigiriya <span style="color:#71806F;">— hands-on village food, spices and clay-pot cooking.</span></figcaption>
+        </figure>
+        <figure style="margin:0; background:#F7F3EA; border:1px solid #E2D9C6;">
+          <img src="https://cdn.bunniktours.com.au/public/pages/November2024/Local%20Village%20Lunch%2C%20Habarana%2C%20Sri%20Lanka%20by%20Lisa%20Turner.jpg" alt="Travellers walking through a rural village path in Habarana Sri Lanka" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:280px; object-fit:cover;" />
+          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Habarana village walk <span style="color:#71806F;">— paddy paths, home gardens and local lunch experiences.</span></figcaption>
+        </figure>
+        <figure style="margin:0; background:#F7F3EA; border:1px solid #E2D9C6;">
+          <img src="https://www.pelago.com/img/products/LK-Sri%20Lanka/minneriya-national-park-elephant-jeep-safari--private/497d1b20-a78f-4878-a9bc-97ee810590da_minneriya-national-park-elephant-jeep-safari--private.jpg" alt="Travellers on safari jeeps near elephants at Minneriya National Park" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:280px; object-fit:cover;" />
+          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Minneriya safari <span style="color:#71806F;">— jeep trips into one of Sri Lanka's best elephant areas.</span></figcaption>
+        </figure>
+        <figure style="margin:0; background:#F7F3EA; border:1px solid #E2D9C6;">
+          <img src="https://cdn.i-scmp.com/sites/default/files/d8/images/canvas/2024/03/04/bac16925-6ed2-485f-8bc1-33d8eb8d1423_0e424827.jpg" alt="International travellers visiting Sigiriya Rock Fortress in Sri Lanka" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:280px; object-fit:cover;" />
+          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Sigiriya Rock Fortress <span style="color:#71806F;">— a classic day trip from Habarana for culture and views.</span></figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -352,6 +564,42 @@
     </div>
   </section>
 
+  <section id="faq" data-screen-label="Amenities and FAQ" style="background:#FFFDF8; padding:clamp(64px,8vw,110px) 22px;">
+    <div style="max-width:1120px; margin:0 auto;">
+      <p style="margin:0 0 16px; font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:#C0913F;">Before you book</p>
+      <h2 style="margin:0 0 14px; font-family:Marcellus, serif; font-weight:400; font-size:clamp(30px,4vw,48px); line-height:1.12; color:#0F2A20; max-width:24ch;">Clear details for a confident stay.</h2>
+      <p style="margin:0 0 42px; color:#5B6A61; font-size:16px; line-height:1.75; max-width:66ch; text-wrap:pretty;">Travellers usually compare comfort, food, location and policies before booking direct. These are the essentials at The Tusker.</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,250px),1fr)); gap:16px; margin-bottom:40px;">
+        <div style="border:1px solid #E2D9C6; background:#F7F3EA; padding:22px;">
+          <p style="margin:0 0 8px; font-family:Marcellus, serif; font-size:21px; color:#0F2A20;">Private tree house</p>
+          <p style="margin:0; color:#5B6A61; font-size:15px; line-height:1.65;">One raised timber unit with two double beds, canopy deck and space for up to four guests.</p>
+        </div>
+        <div style="border:1px solid #E2D9C6; background:#F7F3EA; padding:22px;">
+          <p style="margin:0 0 8px; font-family:Marcellus, serif; font-size:21px; color:#0F2A20;">Village restaurant</p>
+          <p style="margin:0; color:#5B6A61; font-size:15px; line-height:1.65;">Twenty seats, cooked-to-order Sri Lankan meals and live cookery class options.</p>
+        </div>
+        <div style="border:1px solid #E2D9C6; background:#F7F3EA; padding:22px;">
+          <p style="margin:0 0 8px; font-family:Marcellus, serif; font-size:21px; color:#0F2A20;">Easy local trips</p>
+          <p style="margin:0; color:#5B6A61; font-size:15px; line-height:1.65;">Ask for Sigiriya, Minneriya safari, village walks, boat tours, batik and bicycle routes.</p>
+        </div>
+      </div>
+      <div style="display:grid; gap:0; border-top:1px solid #E2D9C6;">
+        <div style="padding:22px 0; border-bottom:1px solid #E2D9C6; display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:12px 36px;">
+          <h3 style="margin:0; font-family:Marcellus, serif; font-weight:400; font-size:22px; color:#0F2A20;">How do I confirm a booking?</h3>
+          <p style="margin:0; color:#5B6A61; font-size:16px; line-height:1.7;">Send your details through WhatsApp. The team confirms availability, rate and arrival directions directly.</p>
+        </div>
+        <div style="padding:22px 0; border-bottom:1px solid #E2D9C6; display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:12px 36px;">
+          <h3 style="margin:0; font-family:Marcellus, serif; font-weight:400; font-size:22px; color:#0F2A20;">Can meals and activities be arranged?</h3>
+          <p style="margin:0; color:#5B6A61; font-size:16px; line-height:1.7;">Yes. Share meal requests and preferred experiences before arrival so the kitchen and local guides can prepare.</p>
+        </div>
+        <div style="padding:22px 0; border-bottom:1px solid #E2D9C6; display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:12px 36px;">
+          <h3 style="margin:0; font-family:Marcellus, serif; font-weight:400; font-size:22px; color:#0F2A20;">Is this better for couples, families or small groups?</h3>
+          <p style="margin:0; color:#5B6A61; font-size:16px; line-height:1.7;">The tree house works best for couples, families and small groups of up to four staying together.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="contact" data-screen-label="Contact" style="background:#08180F; color:#F7F3EA; padding:clamp(64px,8vw,110px) 22px;">
     <div style="max-width:1240px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:clamp(32px,5vw,72px); align-items:start;">
       <div>
@@ -377,20 +625,33 @@
     </div>
   </section>
 
-  <footer style="background:#0B1A12; color:#8FA396; padding:48px 22px;">
-    <div style="max-width:1240px; margin:0 auto; display:flex; gap:28px; flex-wrap:wrap; align-items:center;">
+  <footer style="background:#0B1A12; color:#8FA396; padding:48px 22px; text-align:center;">
+    <div style="max-width:1240px; margin:0 auto; display:flex; gap:24px 34px; flex-wrap:wrap; align-items:center; justify-content:center;">
       <img src="images/logo.png" alt="The Tusker Resort and Restaurant" style="height:78px; width:auto; filter:invert(1); mix-blend-mode:lighten;" />
       <p style="margin:0; font-size:14px; max-width:38ch; line-height:1.7;">Anuradhapura Road, Laksirigama, Habarana.<br />Tree house stays, village food and hand-arranged experiences.</p>
-      <p style="margin:0; font-size:14px; line-height:1.7;"><a href="tel:+94711186307">+94 71 118 6307</a><br /><a href="mailto:anjula0333@gmail.com">anjula0333@gmail.com</a></p>
-      <p style="margin:0 0 0 auto; font-size:13px;">© 2026 The Tusker Resort and Restaurant</p>
+      <p style="margin:0; font-size:14px; line-height:1.7;"><a href="tel:+94711186307">+94 71 118 6307</a><br /><a href="mailto:thetuskerresort@gmail.com">thetuskerresort@gmail.com</a></p>
+      <p style="margin:0; font-size:13px; flex:1 1 100%;">Developed by <a href="https://www.linkedin.com/in/kavishka-isuranga/" target="_blank" rel="noopener">welcomeweb</a></p>
     </div>
   </footer>
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;94711186307&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;},&quot;phoneDisplay&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;+94 71 118 6307&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;},&quot;email&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;anjula0333@gmail.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;},&quot;locationLine&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Anuradhapura Road, Laksirigama, Habarana&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;},&quot;mapQuery&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Anuradhapura Road, Laksirigama, Habarana, Sri Lanka&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;94711186307&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;},&quot;phoneDisplay&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;+94 71 118 6307&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;},&quot;email&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;thetuskerresort@gmail.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;},&quot;locationLine&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Anuradhapura Road, Laksirigama, Habarana&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;},&quot;mapQuery&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Anuradhapura Road, Laksirigama, Habarana, Sri Lanka&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;}}">
 class Component extends DCLogic {
-  state = { name: "", phone: "", checkin: "", checkout: "", guests: "2", pkg: "TREE HOUSE ONLY" };
+  state = {
+    name: "",
+    phone: "",
+    guestEmail: "",
+    idNumber: "",
+    passportNumber: "",
+    city: "",
+    country: "",
+    gender: "",
+    checkin: "",
+    checkout: "",
+    members: "2",
+    pkg: "TREE HOUSE ONLY"
+  };
 
   set(k) { return (e) => this.setState({ [k]: e.target.value }); }
 
@@ -404,21 +665,32 @@ class Component extends DCLogic {
       "Hello The Tusker Resort and Restaurant, I would like to make a booking enquiry.\n" +
       "Name: " + (s.name || "-") + "\n" +
       "WhatsApp: " + (s.phone || "-") + "\n" +
+      "Email: " + (s.guestEmail || "-") + "\n" +
+      "ID number: " + (s.idNumber || "-") + "\n" +
+      "Passport number: " + (s.passportNumber || "-") + "\n" +
+      "City: " + (s.city || "-") + "\n" +
+      "Country: " + (s.country || "-") + "\n" +
+      "Gender: " + (s.gender || "-") + "\n" +
       "Check-in: " + (s.checkin || "-") + "\n" +
       "Check-out: " + (s.checkout || "-") + "\n" +
-      "Guests: " + s.guests + "\n" +
+      "Members: " + s.members + "\n" +
       "Package: " + s.pkg;
     const loc = this.props.locationLine ?? "Anuradhapura Road, Laksirigama, Habarana";
     return {
-      name: s.name, phone: s.phone, checkin: s.checkin, checkout: s.checkout,
-      guests: s.guests, pkg: s.pkg,
+      name: s.name, phone: s.phone, guestEmail: s.guestEmail,
+      idNumber: s.idNumber, passportNumber: s.passportNumber,
+      city: s.city, country: s.country, gender: s.gender,
+      checkin: s.checkin, checkout: s.checkout, members: s.members, pkg: s.pkg,
       onName: this.set("name"), onPhone: this.set("phone"),
+      onGuestEmail: this.set("guestEmail"), onIdNumber: this.set("idNumber"),
+      onPassportNumber: this.set("passportNumber"), onCity: this.set("city"),
+      onCountry: this.set("country"), onGender: this.set("gender"),
       onCheckin: this.set("checkin"), onCheckout: this.set("checkout"),
-      onGuests: this.set("guests"), onPkg: this.set("pkg"),
+      onMembers: this.set("members"), onPkg: this.set("pkg"),
       onSubmit: () => window.open(this.link(enquiry), "_blank", "noopener"),
       waHref: this.link("Hello The Tusker Resort and Restaurant, I would like to make a booking enquiry."),
       phoneDisplay: this.props.phoneDisplay ?? "+94 71 118 6307",
-      email: this.props.email ?? "anjula0333@gmail.com",
+      email: this.props.email ?? "thetuskerresort@gmail.com",
       locationLine: loc,
       mapHref: "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(this.props.mapQuery ?? (loc + ", Sri Lanka"))
     };

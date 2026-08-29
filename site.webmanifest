@@ -1,0 +1,16 @@
+{
+  "name": "The Tusker Resort and Restaurant",
+  "short_name": "The Tusker",
+  "description": "Tree house stays, Sri Lankan village food and travel experiences in Habarana, Sri Lanka.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#F7F3EA",
+  "theme_color": "#0F2A20",
+  "icons": [
+    {
+      "src": "images/logo.png",
+      "sizes": "1600x858",
+      "type": "image/png"
+    }
+  ]
+}
