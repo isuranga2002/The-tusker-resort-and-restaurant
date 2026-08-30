@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Tusker Resort and Restaurant | Tree House Stay in Habarana, Sri Lanka</title>
-<meta name="description" content="Book The Tusker Resort and Restaurant in Habarana, Sri Lanka for a private tree house stay, Sri Lankan village food, cooking classes, Sigiriya trips and Minneriya safari experiences.">
-<meta name="keywords" content="The Tusker Resort and Restaurant, Habarana resort, Habarana hotel, Habarana villa, tree house Sri Lanka, Sigiriya hotel, Minneriya safari, Sri Lankan cooking class, village restaurant Habarana">
+<meta name="description" content="Book The Tusker Resort and Restaurant in Habarana, Sri Lanka for a private tree house stay, Sri Lankan village food, Sigiriya trips, Ritigala visits, Hurulu Eco Park safari, bicycle tours and Hurulu tank boat tours.">
+<meta name="keywords" content="The Tusker Resort and Restaurant, Habarana resort, Habarana hotel, Habarana villa, tree house Sri Lanka, Sigiriya hotel, Sigiriya tour, Ritigala tour, Hurulu Eco Park safari, Habarana Eco Park, Hurulu tank boat tour, Habarana bicycle tour, Sri Lankan cooking class, village restaurant Habarana">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="theme-color" content="#0F2A20">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Tusker Resort and Restaurant | Habarana Tree House Stay">
-<meta property="og:description" content="A private tree house, village restaurant, cooking class and nearby Sigiriya and Minneriya travel experiences in Habarana, Sri Lanka.">
+<meta property="og:description" content="A private tree house, village restaurant, cooking class and hand-arranged Sigiriya, Ritigala, Hurulu Eco Park, bicycle and Hurulu tank boat tours in Habarana.">
 <meta property="og:image" content="images/hero-night.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="geo.region" content="LK-71">
@@ -98,6 +98,9 @@
     #booking button { width:100% !important; height:auto !important; min-height:50px !important; }
     section { padding-left:16px !important; padding-right:16px !important; }
     figure img, #gallery img { height:260px !important; }
+    .restaurant-room-gallery { grid-template-columns:1fr !important; }
+    .restaurant-room-gallery figure { grid-column:auto !important; grid-row:auto !important; }
+    .restaurant-room-gallery img { min-height:0 !important; height:260px !important; }
     footer > div { align-items:center !important; text-align:center !important; justify-content:center !important; }
     footer p:last-child { margin-left:0 !important; width:100% !important; }
   }
@@ -109,13 +112,15 @@
   "@id": "#the-tusker-resort-restaurant",
   "name": "The Tusker Resort and Restaurant",
   "alternateName": "The Tusker Habarana",
-  "description": "Tree house stay, Sri Lankan village restaurant, cooking classes and guided travel experiences in Habarana, Sri Lanka.",
+  "description": "Tree house stay, Sri Lankan village restaurant, cooking classes and guided Sigiriya, Ritigala, Hurulu Eco Park, bicycle and Hurulu tank boat tour experiences in Habarana, Sri Lanka.",
   "image": [
     "images/hero-night.jpg",
     "images/treehouse-golden.jpg",
     "images/treehouse-full.jpg",
     "images/food-platter.jpg",
-    "images/cooking-class.jpg"
+    "images/cooking-class.jpg",
+    "images/restaurant-clay-buffet-wide.jpeg",
+    "images/restaurant-clay-pots.jpeg"
   ],
   "telephone": "+94711186307",
   "email": "thetuskerresort@gmail.com",
@@ -139,7 +144,9 @@
     { "@type": "LocationFeatureSpecification", "name": "Private tree house stay", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Village cooking class", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Sri Lankan restaurant", "value": true },
-    { "@type": "LocationFeatureSpecification", "name": "Nearby Sigiriya and Minneriya trips", "value": true }
+    { "@type": "LocationFeatureSpecification", "name": "Nearby Sigiriya and Ritigala trips", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Hurulu Eco Park safari arrangements", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Bicycle and Hurulu tank boat tours", "value": true }
   ]
 }
 </script>
@@ -187,6 +194,7 @@
         <a href="#packages" style="color:#2A3A31; padding:9px 0;">Packages</a>
         <a href="#restaurant" style="color:#2A3A31; padding:9px 0;">Restaurant</a>
         <a href="#experiences" style="color:#2A3A31; padding:9px 0;">Experiences</a>
+        <a href="#nearby" style="color:#2A3A31; padding:9px 0;">Tours</a>
         <a href="#contact" style="color:#2A3A31; padding:9px 0;">Contact</a>
       </nav>
       <a class="nav-cta" href="{{ waHref }}" target="_blank" rel="noopener" style="flex:0 0 auto; margin-left:auto; background:#0F2A20; color:#F7F3EA; padding:12px clamp(16px,2.4vw,24px); border-radius:2px; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; white-space:nowrap;" style-hover="background:#C0913F; color:#0F2A20;">Book Now</a>
@@ -269,6 +277,11 @@
             <option value="HB">HB — half board</option>
             <option value="FB">FB — full board</option>
             <option value="COOKERY CLASS">Cookery class</option>
+            <option value="SIGIRIYA TOUR">Sigiriya tour</option>
+            <option value="RITIGALA TOUR">Ritigala tour</option>
+            <option value="HURULU ECO PARK SAFARI">Hurulu Eco Park safari</option>
+            <option value="BICYCLE TOUR">Bicycle tour</option>
+            <option value="HURULU TANK BOAT TOUR">Hurulu tank boat tour</option>
           </select>
         </label>
         <button type="button" onClick="{{ onSubmit }}" style="background:#C0913F; color:#0B1A12; border:none; padding:15px 26px; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; font-weight:600; font-family:Karla, sans-serif; border-radius:2px; cursor:pointer; height:49px;" style-hover="background:#F7F3EA;">Send on WhatsApp</button>
@@ -295,7 +308,7 @@
           </div>
           <div>
             <p style="margin:0 0 6px; font-family:Marcellus, serif; font-size:26px; color:#0F2A20;">05</p>
-            <p style="margin:0; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:#71806F;">Guided experiences</p>
+            <p style="margin:0; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:#71806F;">Local tours arranged</p>
           </div>
         </div>
       </div>
@@ -432,6 +445,24 @@
           <figcaption style="padding:14px 0 0; font-size:15px; color:#D6E0D8;">Sesame &amp; jaggery <span style="color:#7E9488;">— sweet to finish</span></figcaption>
         </figure>
       </div>
+      <div class="restaurant-room-gallery" style="margin-top:42px; display:grid; grid-template-columns:1.2fr repeat(2, minmax(0,0.9fr)); gap:14px;">
+        <figure style="margin:0; grid-row:span 2; background:#0F2A20;">
+          <img src="images/restaurant-clay-buffet-wide.jpeg" alt="Village style clay pot buffet room at The Tusker restaurant" loading="lazy" decoding="async" style="width:100%; height:100%; min-height:360px; object-fit:cover;" />
+          <figcaption style="padding:14px 0 0; font-size:15px; color:#D6E0D8;">Clay-pot village buffet <span style="color:#7E9488;">— served in a hand-finished village room</span></figcaption>
+        </figure>
+        <figure style="margin:0;">
+          <img src="images/restaurant-clay-pots.jpeg" alt="Clay pots and village cooking display at The Tusker restaurant" loading="lazy" decoding="async" style="width:100%; height:220px; object-fit:cover;" />
+          <figcaption style="padding:14px 0 0; font-size:15px; color:#D6E0D8;">Earthen cookware <span style="color:#7E9488;">— curries kept warm in clay pots</span></figcaption>
+        </figure>
+        <figure style="margin:0;">
+          <img src="images/restaurant-earthen-pots.jpeg" alt="Traditional clay serving pots arranged on woven palm mats" loading="lazy" decoding="async" style="width:100%; height:220px; object-fit:cover;" />
+          <figcaption style="padding:14px 0 0; font-size:15px; color:#D6E0D8;">Traditional service <span style="color:#7E9488;">— woven mats, clay ladles and village detail</span></figcaption>
+        </figure>
+        <figure style="margin:0; grid-column:span 2;">
+          <img src="images/restaurant-village-room.jpeg" alt="Rustic village dining room with thatched roof and clay walls" loading="lazy" decoding="async" style="width:100%; height:220px; object-fit:cover;" />
+          <figcaption style="padding:14px 0 0; font-size:15px; color:#D6E0D8;">Village dining setting <span style="color:#7E9488;">— warm lighting, clay walls and rustic timber</span></figcaption>
+        </figure>
+      </div>
       <div style="margin-top:34px; display:flex; gap:20px; flex-wrap:wrap; align-items:center; border-top:1px solid rgba(247,243,234,0.14); padding-top:28px;">
         <p style="margin:0; color:#7E9488; font-size:14px; max-width:56ch;">Please share meal requests before arrival — everything is cooked to order for the guests we have that day.</p>
         <a href="{{ waHref }}" target="_blank" rel="noopener" style="margin-left:auto; border:1px solid #C0913F; color:#C0913F; padding:14px 26px; font-size:13px; letter-spacing:0.14em; text-transform:uppercase;" style-hover="background:#C0913F; color:#0B1A12;">Reserve a table</a>
@@ -442,48 +473,61 @@
   <section id="experiences" data-screen-label="Experiences" style="background:#F7F3EA; padding:clamp(64px,8vw,120px) 22px;">
     <div style="max-width:1240px; margin:0 auto;">
       <p style="margin:0 0 16px; font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:#C0913F;">Experiences</p>
-      <h2 style="margin:0 0 46px; font-family:Marcellus, serif; font-weight:400; font-size:clamp(30px,4vw,50px); line-height:1.12; color:#0F2A20; max-width:24ch;">Five things we arrange ourselves.</h2>
-      <div style="display:grid; gap:0; border-top:1px solid #E2D9C6;">
-        <div style="display:grid; grid-template-columns:auto 1fr; gap:clamp(20px,4vw,56px); padding:30px 0; border-bottom:1px solid #E2D9C6; align-items:baseline;" style-hover="background:#FFFDF8;">
-          <span style="font-family:Marcellus, serif; font-size:clamp(22px,2.4vw,30px); color:#C0913F;">01</span>
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:16px 40px; align-items:baseline;">
-            <h3 style="margin:0; font-family:Marcellus, serif; font-weight:400; font-size:clamp(21px,2.2vw,28px); color:#0F2A20;">Boat Tour</h3>
-            <p style="margin:0; color:#5B6A61; font-size:16px; line-height:1.7; text-wrap:pretty;">A slow ride out on the water — best at first light, when the birds are still feeding along the bank.</p>
+      <h2 style="margin:0 0 14px; font-family:Marcellus, serif; font-weight:400; font-size:clamp(30px,4vw,50px); line-height:1.12; color:#0F2A20; max-width:26ch;">Culture, wildlife and village life from one Habarana base.</h2>
+      <p style="margin:0 0 46px; color:#5B6A61; font-size:16px; line-height:1.75; max-width:72ch; text-wrap:pretty;">Tell us what kind of day you want and we help arrange the route, local guide, jeep, bicycles or boat. Start times are planned around heat, light and current access rules.</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,280px),1fr)); gap:18px;">
+        <article style="background:#FFFDF8; border:1px solid #E2D9C6;">
+          <img src="https://www.amayviaja.com/img/programas/psrilanka/psrilanka02.jpg" alt="Aerial view of Sigiriya Rock Fortress and summit palace ruins in Sri Lanka" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:230px; object-fit:cover;" />
+          <div style="padding:22px;">
+            <p style="margin:0 0 8px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#C0913F;">Ancient capital</p>
+            <h3 style="margin:0 0 12px; font-family:Marcellus, serif; font-weight:400; font-size:25px; color:#0F2A20;">Sigiriya Rock Fortress</h3>
+            <p style="margin:0; color:#5B6A61; font-size:15px; line-height:1.7;">Climb the 5th-century Lion Rock, see the water gardens and lion paws, and look across the forest plains from the palace summit.</p>
           </div>
-        </div>
-        <div style="display:grid; grid-template-columns:auto 1fr; gap:clamp(20px,4vw,56px); padding:30px 0; border-bottom:1px solid #E2D9C6; align-items:baseline;" style-hover="background:#FFFDF8;">
-          <span style="font-family:Marcellus, serif; font-size:clamp(22px,2.4vw,30px); color:#C0913F;">02</span>
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:16px 40px; align-items:baseline;">
-            <h3 style="margin:0; font-family:Marcellus, serif; font-weight:400; font-size:clamp(21px,2.2vw,28px); color:#0F2A20;">Handmade Batik</h3>
-            <p style="margin:0; color:#5B6A61; font-size:16px; line-height:1.7; text-wrap:pretty;">Sit with a batik artist, draw with hot wax and dye your own cloth to take home.</p>
+        </article>
+        <article style="background:#FFFDF8; border:1px solid #E2D9C6;">
+          <img src="https://www.trawell.in/admin/images/upload/072089271Anuradhapura_Ritigala.jpg" alt="Stone ruins of Ritigala forest monastery surrounded by jungle" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:230px; object-fit:cover;" />
+          <div style="padding:22px;">
+            <p style="margin:0 0 8px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#C0913F;">Forest monastery</p>
+            <h3 style="margin:0 0 12px; font-family:Marcellus, serif; font-weight:400; font-size:25px; color:#0F2A20;">Ritigala Heritage Visit</h3>
+            <p style="margin:0; color:#5B6A61; font-size:15px; line-height:1.7;">A quiet journey to Ritigala's ancient Buddhist forest-monastery landscape, arranged with respect for protected-area rules.</p>
           </div>
-        </div>
-        <div style="display:grid; grid-template-columns:auto 1fr; gap:clamp(20px,4vw,56px); padding:30px 0; border-bottom:1px solid #E2D9C6; align-items:baseline;" style-hover="background:#FFFDF8;">
-          <span style="font-family:Marcellus, serif; font-size:clamp(22px,2.4vw,30px); color:#C0913F;">03</span>
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:16px 40px; align-items:baseline;">
-            <h3 style="margin:0; font-family:Marcellus, serif; font-weight:400; font-size:clamp(21px,2.2vw,28px); color:#0F2A20;">Village Tour</h3>
-            <p style="margin:0; color:#5B6A61; font-size:16px; line-height:1.7; text-wrap:pretty;">Walk the paddy paths with a local guide: home gardens, the tank bund and everyday village life.</p>
+        </article>
+        <article style="background:#FFFDF8; border:1px solid #E2D9C6;">
+          <img src="https://thumb.tidesquare.com/tour/public/product/PRV3006455682/PRD3013672529/origin/3-145.jpg?type=wide" alt="Visitors watching elephants from a safari jeep in Hurulu Eco Park" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:230px; object-fit:cover;" />
+          <div style="padding:22px;">
+            <p style="margin:0 0 8px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#C0913F;">Elephant country</p>
+            <h3 style="margin:0 0 12px; font-family:Marcellus, serif; font-weight:400; font-size:25px; color:#0F2A20;">Hurulu Eco Park Safari</h3>
+            <p style="margin:0; color:#5B6A61; font-size:15px; line-height:1.7;">A 4WD safari through dry-zone forest and grassland near Habarana, known for Asian elephant sightings in the right season.</p>
           </div>
-        </div>
-        <div style="display:grid; grid-template-columns:auto 1fr; gap:clamp(20px,4vw,56px); padding:30px 0; border-bottom:1px solid #E2D9C6; align-items:baseline;" style-hover="background:#FFFDF8;">
-          <span style="font-family:Marcellus, serif; font-size:clamp(22px,2.4vw,30px); color:#C0913F;">04</span>
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:16px 40px; align-items:baseline;">
-            <h3 style="margin:0; font-family:Marcellus, serif; font-weight:400; font-size:clamp(21px,2.2vw,28px); color:#0F2A20;">Live Cooking &amp; Cookery Class</h3>
-            <p style="margin:0; color:#5B6A61; font-size:16px; line-height:1.7; text-wrap:pretty;">Grind the spices, temper the coconut oil, cook village food on a clay hearth — then sit down and eat it.</p>
+        </article>
+        <article style="background:#FFFDF8; border:1px solid #E2D9C6;">
+          <img src="https://lakpura.com/cdn/shop/files/LK77001D9C-01-E.jpg?v=1774522864" alt="Cyclists pausing beside a tank road during a Habarana bicycle tour" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:230px; object-fit:cover;" />
+          <div style="padding:22px;">
+            <p style="margin:0 0 8px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#C0913F;">Village route</p>
+            <h3 style="margin:0 0 12px; font-family:Marcellus, serif; font-weight:400; font-size:25px; color:#0F2A20;">Bicycle Tour</h3>
+            <p style="margin:0; color:#5B6A61; font-size:15px; line-height:1.7;">Ride the flat back roads around Habarana past paddy fields, tanks, home gardens and small temples with a local route plan.</p>
           </div>
-        </div>
-        <div style="display:grid; grid-template-columns:auto 1fr; gap:clamp(20px,4vw,56px); padding:30px 0; border-bottom:1px solid #E2D9C6; align-items:baseline;" style-hover="background:#FFFDF8;">
-          <span style="font-family:Marcellus, serif; font-size:clamp(22px,2.4vw,30px); color:#C0913F;">05</span>
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:16px 40px; align-items:baseline;">
-            <h3 style="margin:0; font-family:Marcellus, serif; font-weight:400; font-size:clamp(21px,2.2vw,28px); color:#0F2A20;">Bicycle Tour</h3>
-            <p style="margin:0; color:#5B6A61; font-size:16px; line-height:1.7; text-wrap:pretty;">Bicycles for the back roads — flat, shaded lanes past tanks, fields and small temples.</p>
+        </article>
+        <article style="background:#FFFDF8; border:1px solid #E2D9C6;">
+          <img src="https://www.civitatis.com/f/sri-lanka/sigiriya/galeria/paseo-barca-lago-habarana-sri-lanka.jpg" alt="Travellers on a calm Habarana lake boat tour with a local guide" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:230px; object-fit:cover;" />
+          <div style="padding:22px;">
+            <p style="margin:0 0 8px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#C0913F;">Water and birds</p>
+            <h3 style="margin:0 0 12px; font-family:Marcellus, serif; font-weight:400; font-size:25px; color:#0F2A20;">Hurulu Tank Boat Tour</h3>
+            <p style="margin:0; color:#5B6A61; font-size:15px; line-height:1.7;">A gentle boat ride on the tank, best in the soft morning or evening light when birds move along the banks.</p>
           </div>
-        </div>
+        </article>
+        <article style="background:#FFFDF8; border:1px solid #E2D9C6;">
+          <img src="images/cooking-class.jpg" alt="Chef plating village dishes during a live cooking class" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <div style="padding:22px;">
+            <p style="margin:0 0 8px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#C0913F;">Hands-on food</p>
+            <h3 style="margin:0 0 12px; font-family:Marcellus, serif; font-weight:400; font-size:25px; color:#0F2A20;">Live Cookery Class</h3>
+            <p style="margin:0; color:#5B6A61; font-size:15px; line-height:1.7;">Grind the spices, cook on a clay hearth and sit down to the meal you helped make in the village restaurant.</p>
+          </div>
+        </article>
       </div>
-      <div style="margin-top:44px; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:14px;">
-        <img src="images/cooking-class.jpg" alt="Chef plating village dishes during a live cooking class" loading="lazy" decoding="async" style="width:100%; height:300px; object-fit:cover;" />
-        <img src="images/food-village.jpg" alt="Village plate with green rice and vegetable curries" loading="lazy" decoding="async" style="width:100%; height:300px; object-fit:cover;" />
-        <img src="images/food-egg.jpg" alt="Egg hopper dish with tomato salad" loading="lazy" decoding="async" style="width:100%; height:300px; object-fit:cover;" />
+      <div style="margin-top:34px; display:flex; gap:18px; flex-wrap:wrap; align-items:center; border-top:1px solid #E2D9C6; padding-top:26px;">
+        <p style="margin:0; color:#5B6A61; font-size:15px; line-height:1.7; max-width:68ch;">Tour times, entrance tickets and transport costs can change by season. Message us with your dates so we can recommend the cleanest route for your group.</p>
+        <a href="#booking" style="margin-left:auto; background:#0F2A20; color:#F7F3EA; padding:14px 26px; font-size:13px; letter-spacing:0.14em; text-transform:uppercase;" style-hover="background:#C0913F; color:#0B1A12;">Ask for a tour plan</a>
       </div>
     </div>
   </section>
@@ -508,26 +552,34 @@
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:clamp(24px,4vw,56px); align-items:end; margin-bottom:42px;">
         <div>
           <p style="margin:0 0 16px; font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:#C0913F;">Nearby from Habarana</p>
-          <h2 style="margin:0; font-family:Marcellus, serif; font-weight:400; font-size:clamp(30px,4vw,50px); line-height:1.12; color:#0F2A20; max-width:24ch;">Stay close to Sigiriya, village tours and elephant country.</h2>
+          <h2 style="margin:0; font-family:Marcellus, serif; font-weight:400; font-size:clamp(30px,4vw,50px); line-height:1.12; color:#0F2A20; max-width:25ch;">Stay close to Sigiriya, Ritigala, Hurulu Eco Park and tank country.</h2>
         </div>
-        <p style="margin:0; color:#5B6A61; font-size:17px; line-height:1.75; text-wrap:pretty;">The Tusker is positioned for travellers who want a quiet Habarana base with easy access to Sigiriya Rock Fortress, Minneriya National Park, rural village tours and hands-on Sri Lankan cooking.</p>
+        <p style="margin:0; color:#5B6A61; font-size:17px; line-height:1.75; text-wrap:pretty;">The Tusker is positioned for travellers who want a quiet Habarana base with easy access to Sri Lanka's Cultural Triangle, elephant corridors, forest ruins, village roads and calm tank-side mornings.</p>
       </div>
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,250px),1fr)); gap:16px;">
         <figure style="margin:0; background:#F7F3EA; border:1px solid #E2D9C6;">
-          <img src="https://cdn.getyourguide.com/image/format%3Dauto%2Cfit%3Dcrop%2Cgravity%3Dauto%2Cquality%3D60%2Cwidth%3D620%2Cheight%3D400%2Cdpr%3D1/tour_img/b5297a24a593e0d2b099e23004e16f7c7713674b578be3fc7b33f04bf74e6f2c.jpeg" alt="Travellers preparing herbs during a Sri Lankan cooking class near Sigiriya" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:280px; object-fit:cover;" />
-          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Cooking class near Sigiriya <span style="color:#71806F;">— hands-on village food, spices and clay-pot cooking.</span></figcaption>
+          <img src="https://www.amayviaja.com/img/programas/psrilanka/psrilanka02.jpg" alt="Sigiriya Rock Fortress rising above the forest in Sri Lanka" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:280px; object-fit:cover;" />
+          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Sigiriya Rock Fortress <span style="color:#71806F;">— 5th-century palace ruins, water gardens, frescoes and wide summit views.</span></figcaption>
         </figure>
         <figure style="margin:0; background:#F7F3EA; border:1px solid #E2D9C6;">
-          <img src="https://cdn.bunniktours.com.au/public/pages/November2024/Local%20Village%20Lunch%2C%20Habarana%2C%20Sri%20Lanka%20by%20Lisa%20Turner.jpg" alt="Travellers walking through a rural village path in Habarana Sri Lanka" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:280px; object-fit:cover;" />
-          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Habarana village walk <span style="color:#71806F;">— paddy paths, home gardens and local lunch experiences.</span></figcaption>
+          <img src="https://www.trawell.in/admin/images/upload/072089271Anuradhapura_Ritigala.jpg" alt="Ritigala forest monastery ruins in a green jungle setting" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:280px; object-fit:cover;" />
+          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Ritigala <span style="color:#71806F;">— ancient forest-monastery ruins beside a protected mountain landscape.</span></figcaption>
         </figure>
         <figure style="margin:0; background:#F7F3EA; border:1px solid #E2D9C6;">
-          <img src="https://www.pelago.com/img/products/LK-Sri%20Lanka/minneriya-national-park-elephant-jeep-safari--private/497d1b20-a78f-4878-a9bc-97ee810590da_minneriya-national-park-elephant-jeep-safari--private.jpg" alt="Travellers on safari jeeps near elephants at Minneriya National Park" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:280px; object-fit:cover;" />
-          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Minneriya safari <span style="color:#71806F;">— jeep trips into one of Sri Lanka's best elephant areas.</span></figcaption>
+          <img src="https://thumb.tidesquare.com/tour/public/product/PRV3006455682/PRD3013672529/origin/3-145.jpg?type=wide" alt="Elephant herd in front of a safari jeep at Hurulu Eco Park" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:280px; object-fit:cover;" />
+          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Hurulu Eco Park Habarana <span style="color:#71806F;">— jeep safari through dry-zone forest and elephant habitat.</span></figcaption>
         </figure>
         <figure style="margin:0; background:#F7F3EA; border:1px solid #E2D9C6;">
-          <img src="https://cdn.i-scmp.com/sites/default/files/d8/images/canvas/2024/03/04/bac16925-6ed2-485f-8bc1-33d8eb8d1423_0e424827.jpg" alt="International travellers visiting Sigiriya Rock Fortress in Sri Lanka" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:280px; object-fit:cover;" />
-          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Sigiriya Rock Fortress <span style="color:#71806F;">— a classic day trip from Habarana for culture and views.</span></figcaption>
+          <img src="https://www.civitatis.com/f/sri-lanka/sigiriya/galeria/paseo-barca-lago-habarana-sri-lanka.jpg" alt="Small boat tour on Habarana lake with green forest reflections" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:280px; object-fit:cover;" />
+          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Hurulu Tank Boat Tour <span style="color:#71806F;">— calm water, birdlife and a slow local boat ride.</span></figcaption>
+        </figure>
+        <figure style="margin:0; background:#F7F3EA; border:1px solid #E2D9C6;">
+          <img src="https://lakpura.com/cdn/shop/files/LK77001D9C-01-E.jpg?v=1774522864" alt="Cyclists beside a lake on a Habarana countryside bicycle tour" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:280px; object-fit:cover;" />
+          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Bicycle tour <span style="color:#71806F;">— quiet village roads, fields, tanks and local stops near Habarana.</span></figcaption>
+        </figure>
+        <figure style="margin:0; background:#F7F3EA; border:1px solid #E2D9C6;">
+          <img src="images/restaurant-clay-pots.jpeg" alt="Clay pots used for live Sri Lankan village cooking at The Tusker" loading="lazy" decoding="async" style="width:100%; height:280px; object-fit:cover;" />
+          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Cookery class <span style="color:#71806F;">— clay-pot village cooking before or after your local tour day.</span></figcaption>
         </figure>
       </div>
     </div>
@@ -580,7 +632,7 @@
         </div>
         <div style="border:1px solid #E2D9C6; background:#F7F3EA; padding:22px;">
           <p style="margin:0 0 8px; font-family:Marcellus, serif; font-size:21px; color:#0F2A20;">Easy local trips</p>
-          <p style="margin:0; color:#5B6A61; font-size:15px; line-height:1.65;">Ask for Sigiriya, Minneriya safari, village walks, boat tours, batik and bicycle routes.</p>
+          <p style="margin:0; color:#5B6A61; font-size:15px; line-height:1.65;">Ask for Sigiriya, Ritigala, Hurulu Eco Park, bicycle routes and Hurulu tank boat tours.</p>
         </div>
       </div>
       <div style="display:grid; gap:0; border-top:1px solid #E2D9C6;">
