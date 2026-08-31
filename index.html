@@ -23,6 +23,20 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="preload" as="image" href="images/hero-night.jpg" fetchpriority="high">
 <script src="./support.js"></script>
+<script>
+  window.addEventListener("DOMContentLoaded", function () {
+    window.setTimeout(function () {
+      document.querySelectorAll("script[data-run-after-dc]:not([data-executed])").forEach(function (script) {
+        if (!script.textContent || script.type === "application/ld+json" || script.type === "text/x-dc") return;
+        const activeScript = document.createElement("script");
+        activeScript.textContent = script.textContent;
+        activeScript.dataset.executed = "true";
+        document.body.appendChild(activeScript);
+        script.dataset.executed = "true";
+      });
+    }, 80);
+  });
+</script>
 </head>
 <body>
 <x-dc>
@@ -61,14 +75,19 @@
   .primary-nav a { border-bottom:1px solid transparent; transition:color .2s ease, border-color .2s ease; }
   .primary-nav a:hover { color:#C0913F !important; border-color:#C0913F; }
   .nav-cta { box-shadow:0 8px 22px rgba(15,42,32,0.14); }
+  .language-switcher { flex:0 0 auto; display:flex; align-items:center; gap:2px; background:#FFFDF8; border:1px solid #E2D9C6; padding:3px; border-radius:999px; box-shadow:0 8px 22px rgba(15,42,32,0.08); }
+  .language-switcher button { border:0; background:transparent; color:#2A3A31; cursor:pointer; border-radius:999px; padding:8px 10px; font-family:Karla, system-ui, sans-serif; font-size:12px; font-weight:600; line-height:1; min-width:38px; }
+  .language-switcher button[aria-pressed="true"] { background:#0F2A20; color:#F7F3EA; }
+  .boat-video-grid video { width:100%; aspect-ratio:9/16; max-height:520px; object-fit:cover; background:#0F2A20; display:block; }
+  .boat-video-media { position:relative; background:#0F2A20; }
+  .boat-play-button { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:58px; height:58px; border:1px solid rgba(247,243,234,0.82); border-radius:50%; background:rgba(15,42,32,0.72); color:#F7F3EA; display:grid; place-items:center; font-size:20px; line-height:1; cursor:pointer; box-shadow:0 12px 28px rgba(0,0,0,0.25); }
+  .boat-video-media.is-playing .boat-play-button { opacity:0; pointer-events:none; }
   .center-copy { text-align:center !important; margin-left:auto !important; margin-right:auto !important; }
   #packages > div > p:first-child,
   #packages > div > h2,
   #packages > div > p:nth-child(3),
   #experiences > div > p:first-child,
   #experiences > div > h2,
-  #gallery > div > p:first-child,
-  #gallery > div > h2,
   #nearby > div > div:first-child > div > p,
   #nearby > div > div:first-child > div > h2,
   #nearby > div > div:first-child > p,
@@ -86,6 +105,8 @@
     .site-header-inner { min-height:auto; justify-content:space-between !important; }
     nav { flex:1 1 100% !important; order:3 !important; justify-content:center !important; overflow-x:visible !important; flex-wrap:wrap !important; gap:14px !important; padding:7px 12px !important; font-size:11px !important; border-radius:999px; max-width:none; }
     nav a { flex:0 0 auto !important; padding:7px 0 !important; }
+    .language-switcher { order:2 !important; margin-left:auto !important; }
+    .language-switcher button { padding:8px 9px !important; font-size:11px !important; min-width:34px !important; }
     header a[target="_blank"] { margin-left:auto !important; padding:10px 14px !important; font-size:11px !important; }
     #home { min-height:calc(100svh - 100px) !important; }
     #home > div { padding:112px 18px 46px !important; }
@@ -101,6 +122,10 @@
     .restaurant-room-gallery { grid-template-columns:1fr !important; }
     .restaurant-room-gallery figure { grid-column:auto !important; grid-row:auto !important; }
     .restaurant-room-gallery img { min-height:0 !important; height:260px !important; }
+    .cookery-guest-gallery { grid-template-columns:1fr 1fr !important; }
+    .cookery-guest-gallery img { height:220px !important; }
+    .boat-video-grid { grid-template-columns:1fr !important; }
+    .boat-video-grid video { max-height:560px !important; }
     footer > div { align-items:center !important; text-align:center !important; justify-content:center !important; }
     footer p:last-child { margin-left:0 !important; width:100% !important; }
   }
@@ -194,9 +219,14 @@
         <a href="#packages" style="color:#2A3A31; padding:9px 0;">Packages</a>
         <a href="#restaurant" style="color:#2A3A31; padding:9px 0;">Restaurant</a>
         <a href="#experiences" style="color:#2A3A31; padding:9px 0;">Experiences</a>
-        <a href="#nearby" style="color:#2A3A31; padding:9px 0;">Tours</a>
+        <a href="#nearby" style="color:#2A3A31; padding:9px 0;">Boat video</a>
         <a href="#contact" style="color:#2A3A31; padding:9px 0;">Contact</a>
       </nav>
+      <div class="language-switcher" aria-label="Language selector">
+        <button type="button" data-lang-switch="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang-switch="si" aria-pressed="false">සිං</button>
+        <button type="button" data-lang-switch="ta" aria-pressed="false">தமிழ்</button>
+      </div>
       <a class="nav-cta" href="{{ waHref }}" target="_blank" rel="noopener" style="flex:0 0 auto; margin-left:auto; background:#0F2A20; color:#F7F3EA; padding:12px clamp(16px,2.4vw,24px); border-radius:2px; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; white-space:nowrap;" style-hover="background:#C0913F; color:#0F2A20;">Book Now</a>
     </div>
   </header>
@@ -463,6 +493,47 @@
           <figcaption style="padding:14px 0 0; font-size:15px; color:#D6E0D8;">Village dining setting <span style="color:#7E9488;">— warm lighting, clay walls and rustic timber</span></figcaption>
         </figure>
       </div>
+      <div style="margin-top:52px; border-top:1px solid rgba(247,243,234,0.14); padding-top:34px;">
+        <div style="display:flex; align-items:end; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-bottom:24px;">
+          <div>
+            <p style="margin:0 0 10px; font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:#C0913F;">Cookery class moments</p>
+            <h3 style="margin:0; font-family:Marcellus, serif; font-weight:400; font-size:clamp(24px,3vw,36px); line-height:1.16; color:#F7F3EA;">Guests cooking, tasting and sharing.</h3>
+          </div>
+          <p style="margin:0; color:#7E9488; font-size:15px; line-height:1.7; max-width:42ch;">Real moments from the village kitchen, kept in a clean gallery so the restaurant section stays easy to scan.</p>
+        </div>
+        <div class="cookery-guest-gallery" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,180px),1fr)); gap:10px;">
+          <img src="images/cookery-guest-01.jpeg" alt="Guests preparing vegetables during a Sri Lankan cookery class" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-02.jpeg" alt="Guests eating village food on the open restaurant terrace" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-03.jpeg" alt="Clay pots of rice and curries arranged for village lunch" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-04.jpeg" alt="Guests enjoying dinner at The Tusker restaurant terrace" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-05.jpeg" alt="Guest grating fresh coconut during a village cooking class" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-06.jpeg" alt="Guests learning to grind coconut and spices by hand" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-07.jpeg" alt="Guests holding plates beside clay-pot curries in the kitchen" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-08.jpeg" alt="Traditional spice bowls and fresh vegetables for Sri Lankan cooking" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-09.jpeg" alt="Guests standing beside a clay hearth during the cookery class" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-10.jpeg" alt="Family guests smiling in the village kitchen at The Tusker" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-11.jpeg" alt="Fresh spices, vegetables and eggs prepared for a cookery class" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-12.jpeg" alt="Guest chopping coconut during a Sri Lankan cooking lesson" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-13.jpeg" alt="Guests eating lunch in the shaded village restaurant" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-14.jpeg" alt="Guests preparing coconut milk in clay pots" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-15.jpeg" alt="Guest cooking over a wood fire in the clay kitchen" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-16.jpeg" alt="Guest serving herbs and vegetables into a clay pot" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-17.jpeg" alt="Guests smiling beside fresh ingredients and spices" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-18.jpeg" alt="Guest mixing coconut with a traditional hand tool" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-19.jpeg" alt="Guests cooking vegetables and curry in the open kitchen" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-20.jpeg" alt="Guests preparing a Sri Lankan curry with clay pots nearby" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-21.jpeg" alt="Guests smiling while cutting vegetables for a cookery class" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-22.jpeg" alt="Guests dining at night on The Tusker restaurant terrace" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-23.jpeg" alt="Guests holding plates after serving village curries" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-24.jpeg" alt="Cookery class guest adding fresh vegetables to a clay pot" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-25.jpeg" alt="Guests standing around the cookery class counter with spices" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-26.jpeg" alt="Guest holding a plated village meal in the cookery class kitchen" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-27.jpeg" alt="Guests preparing coconut milk and curry ingredients together" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-28.jpeg" alt="Two guests dining beside the garden at The Tusker restaurant" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-29.jpeg" alt="Guest cooking on a wood-fired clay hearth" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+          <img src="images/cookery-guest-30.jpeg" alt="Guest enjoying a clay plate of Sri Lankan village food" loading="lazy" decoding="async" style="width:100%; height:230px; object-fit:cover;" />
+        </div>
+      </div>
       <div style="margin-top:34px; display:flex; gap:20px; flex-wrap:wrap; align-items:center; border-top:1px solid rgba(247,243,234,0.14); padding-top:28px;">
         <p style="margin:0; color:#7E9488; font-size:14px; max-width:56ch;">Please share meal requests before arrival — everything is cooked to order for the guests we have that day.</p>
         <a href="{{ waHref }}" target="_blank" rel="noopener" style="margin-left:auto; border:1px solid #C0913F; color:#C0913F; padding:14px 26px; font-size:13px; letter-spacing:0.14em; text-transform:uppercase;" style-hover="background:#C0913F; color:#0B1A12;">Reserve a table</a>
@@ -532,54 +603,36 @@
     </div>
   </section>
 
-  <section id="gallery" data-screen-label="Gallery" style="background:#0F2A20; color:#F7F3EA; padding:clamp(64px,8vw,120px) 22px;">
-    <div style="max-width:1240px; margin:0 auto;">
-      <p style="margin:0 0 16px; font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:#C0913F;">Gallery</p>
-      <h2 style="margin:0 0 46px; font-family:Marcellus, serif; font-weight:400; font-size:clamp(30px,4vw,50px); line-height:1.12; max-width:22ch;">The tree house, as it stands today.</h2>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,260px),1fr)); gap:12px;">
-        <img src="images/treehouse-full.jpg" alt="Full view of the tree house and stair" loading="lazy" decoding="async" style="width:100%; height:380px; object-fit:cover;" />
-        <img src="images/treehouse-roof.jpg" alt="Woven palm roof detail over the deck" loading="lazy" decoding="async" style="width:100%; height:380px; object-fit:cover;" />
-        <img src="images/treehouse-railing.jpg" alt="Branch railing along the deck" loading="lazy" decoding="async" style="width:100%; height:380px; object-fit:cover;" />
-        <img src="images/treehouse-balcony.jpg" alt="Deck entrance framed by branches" loading="lazy" decoding="async" style="width:100%; height:380px; object-fit:cover;" />
-        <img src="images/hero-night.jpg" alt="Tree house glowing at night in the mist" loading="lazy" decoding="async" style="width:100%; height:380px; object-fit:cover;" />
-        <img src="images/treehouse-golden.jpg" alt="Tree house in golden evening light" loading="lazy" decoding="async" style="width:100%; height:380px; object-fit:cover;" />
-      </div>
-    </div>
-  </section>
-
   <section id="nearby" data-screen-label="Nearby travel" style="background:#FFFDF8; padding:clamp(64px,8vw,120px) 22px;">
     <div style="max-width:1240px; margin:0 auto;">
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:clamp(24px,4vw,56px); align-items:end; margin-bottom:42px;">
         <div>
-          <p style="margin:0 0 16px; font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:#C0913F;">Nearby from Habarana</p>
-          <h2 style="margin:0; font-family:Marcellus, serif; font-weight:400; font-size:clamp(30px,4vw,50px); line-height:1.12; color:#0F2A20; max-width:25ch;">Stay close to Sigiriya, Ritigala, Hurulu Eco Park and tank country.</h2>
+          <p style="margin:0 0 16px; font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:#C0913F;">Hurulu Tank Boat Visit</p>
+          <h2 style="margin:0; font-family:Marcellus, serif; font-weight:400; font-size:clamp(30px,4vw,50px); line-height:1.12; color:#0F2A20; max-width:25ch;">See the water before you book.</h2>
         </div>
-        <p style="margin:0; color:#5B6A61; font-size:17px; line-height:1.75; text-wrap:pretty;">The Tusker is positioned for travellers who want a quiet Habarana base with easy access to Sri Lanka's Cultural Triangle, elephant corridors, forest ruins, village roads and calm tank-side mornings.</p>
+        <p style="margin:0; color:#5B6A61; font-size:17px; line-height:1.75; text-wrap:pretty;">Short phone videos from the quiet tank visit: calm water, birds and a local boat ride near Habarana.</p>
       </div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,250px),1fr)); gap:16px;">
-        <figure style="margin:0; background:#F7F3EA; border:1px solid #E2D9C6;">
-          <img src="https://www.amayviaja.com/img/programas/psrilanka/psrilanka02.jpg" alt="Sigiriya Rock Fortress rising above the forest in Sri Lanka" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:280px; object-fit:cover;" />
-          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Sigiriya Rock Fortress <span style="color:#71806F;">— 5th-century palace ruins, water gardens, frescoes and wide summit views.</span></figcaption>
+      <div class="boat-video-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,220px),1fr)); gap:16px;">
+        <figure style="margin:0; background:#F7F3EA; border:1px solid #E2D9C6; overflow:hidden;">
+          <div class="boat-video-media">
+            <video data-boat-video autoplay="autoplay" muted="muted" loop="loop" controls playsinline webkit-playsinline preload="auto" poster="images/hurulu-boat-visit-01-poster.jpg" aria-label="Boat visit clip" src="images/hurulu-boat-visit-01.mp4"></video>
+            <button class="boat-play-button" type="button" aria-label="Play boat visit clip">▶</button>
+          </div>
+          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Boat visit clip <span style="color:#71806F;">— calm water and village scenery near Habarana.</span></figcaption>
         </figure>
-        <figure style="margin:0; background:#F7F3EA; border:1px solid #E2D9C6;">
-          <img src="https://www.trawell.in/admin/images/upload/072089271Anuradhapura_Ritigala.jpg" alt="Ritigala forest monastery ruins in a green jungle setting" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:280px; object-fit:cover;" />
-          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Ritigala <span style="color:#71806F;">— ancient forest-monastery ruins beside a protected mountain landscape.</span></figcaption>
+        <figure style="margin:0; background:#F7F3EA; border:1px solid #E2D9C6; overflow:hidden;">
+          <div class="boat-video-media">
+            <video data-boat-video autoplay="autoplay" muted="muted" loop="loop" controls playsinline webkit-playsinline preload="auto" poster="images/hurulu-boat-visit-02-poster.jpg" aria-label="Small boat route" src="images/hurulu-boat-visit-02.mp4"></video>
+            <button class="boat-play-button" type="button" aria-label="Play small boat route">▶</button>
+          </div>
+          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Small boat route <span style="color:#71806F;">— a closer look at the slow tank-side ride.</span></figcaption>
         </figure>
-        <figure style="margin:0; background:#F7F3EA; border:1px solid #E2D9C6;">
-          <img src="https://thumb.tidesquare.com/tour/public/product/PRV3006455682/PRD3013672529/origin/3-145.jpg?type=wide" alt="Elephant herd in front of a safari jeep at Hurulu Eco Park" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:280px; object-fit:cover;" />
-          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Hurulu Eco Park Habarana <span style="color:#71806F;">— jeep safari through dry-zone forest and elephant habitat.</span></figcaption>
-        </figure>
-        <figure style="margin:0; background:#F7F3EA; border:1px solid #E2D9C6;">
-          <img src="https://www.civitatis.com/f/sri-lanka/sigiriya/galeria/paseo-barca-lago-habarana-sri-lanka.jpg" alt="Small boat tour on Habarana lake with green forest reflections" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:280px; object-fit:cover;" />
-          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Hurulu Tank Boat Tour <span style="color:#71806F;">— calm water, birdlife and a slow local boat ride.</span></figcaption>
-        </figure>
-        <figure style="margin:0; background:#F7F3EA; border:1px solid #E2D9C6;">
-          <img src="https://lakpura.com/cdn/shop/files/LK77001D9C-01-E.jpg?v=1774522864" alt="Cyclists beside a lake on a Habarana countryside bicycle tour" loading="lazy" referrerpolicy="no-referrer" style="width:100%; height:280px; object-fit:cover;" />
-          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Bicycle tour <span style="color:#71806F;">— quiet village roads, fields, tanks and local stops near Habarana.</span></figcaption>
-        </figure>
-        <figure style="margin:0; background:#F7F3EA; border:1px solid #E2D9C6;">
-          <img src="images/restaurant-clay-pots.jpeg" alt="Clay pots used for live Sri Lankan village cooking at The Tusker" loading="lazy" decoding="async" style="width:100%; height:280px; object-fit:cover;" />
-          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Cookery class <span style="color:#71806F;">— clay-pot village cooking before or after your local tour day.</span></figcaption>
+        <figure style="margin:0; background:#F7F3EA; border:1px solid #E2D9C6; overflow:hidden;">
+          <div class="boat-video-media">
+            <video data-boat-video autoplay="autoplay" muted="muted" loop="loop" controls playsinline webkit-playsinline preload="auto" poster="images/hurulu-boat-visit-03-poster.jpg" aria-label="Nature and water" src="images/hurulu-boat-visit-03.mp4"></video>
+            <button class="boat-play-button" type="button" aria-label="Play nature and water">▶</button>
+          </div>
+          <figcaption style="padding:16px 18px 18px; color:#3D4B43; font-size:15px; line-height:1.55;">Nature and water <span style="color:#71806F;">— a longer glimpse of the Hurulu tank visit.</span></figcaption>
         </figure>
       </div>
     </div>
@@ -748,6 +801,550 @@ class Component extends DCLogic {
     };
   }
 }
+</script>
+<script data-run-after-dc>
+(function () {
+  const pageTitle = {
+    en: "The Tusker Resort and Restaurant | Tree House Stay in Habarana, Sri Lanka",
+    si: "The Tusker Resort and Restaurant | හබරණ ගස් නිවසේ නවාතැන",
+    ta: "The Tusker Resort and Restaurant | ஹபரண மர வீடு தங்குமிடம்"
+  };
+
+  const t = {
+    si: {
+      "Stay": "නවාතැන්",
+      "Packages": "පැකේජ",
+      "Restaurant": "අවන්හල",
+      "Experiences": "අත්දැකීම්",
+      "Tours": "සංචාර",
+      "Boat video": "බෝට්ටු වීඩියෝ",
+      "Contact": "සම්බන්ධ වන්න",
+      "Book Now": "දැන් වෙන්කරන්න",
+      "Habarana  ·  Sri Lanka": "හබරණ · ශ්‍රී ලංකාව",
+      "Sleep among the treetops.": "ගස් මුදුන් අතර රාත්‍රියක්.",
+      "A timber tree house built into a living tree, village food cooked in front of you, and the quiet of the forest all night long.": "ජීවත්වන ගසකට සම්බන්ධ කර තැනූ ලී ගස් නිවසක්, ඔබ ඉදිරියේ පිසින ගැමි ආහාර, සහ රාත්‍රිය පුරා වනයේ නිහඬ සුවය.",
+      "Check availability": "ලබා ගත හැකිද බලන්න",
+      "See the tree house": "ගස් නිවස බලන්න",
+      "Booking enquiry": "වෙන්කිරීමේ විමසීම",
+      "Rates and availability are confirmed directly on WhatsApp.": "ගාස්තු සහ ලබාගැනීමේ හැකියාව WhatsApp හරහා සෘජුව තහවුරු කරනු ලැබේ.",
+      "Name": "නම",
+      "WhatsApp number": "WhatsApp අංකය",
+      "Email": "ඊමේල්",
+      "ID number": "හැඳුනුම්පත් අංකය",
+      "Passport number": "විදේශ ගමන් බලපත්‍ර අංකය",
+      "City": "නගරය",
+      "Country": "රට",
+      "Gender": "ස්ත්‍රී පුරුෂ භාවය",
+      "Select": "තෝරන්න",
+      "Male": "පුරුෂ",
+      "Female": "කාන්තා",
+      "Other / prefer not to say": "වෙනත් / සඳහන් නොකරමි",
+      "Check-in": "ඇතුළු වීම",
+      "Check-out": "පිටවීම",
+      "How many members": "සාමාජිකයන් ගණන",
+      "1 member": "සාමාජික 1",
+      "2 members": "සාමාජිකයන් 2",
+      "3 members": "සාමාජිකයන් 3",
+      "4 members": "සාමාජිකයන් 4",
+      "5 members": "සාමාජිකයන් 5",
+      "6 members": "සාමාජිකයන් 6",
+      "7 members": "සාමාජිකයන් 7",
+      "8 members": "සාමාජිකයන් 8",
+      "9 members": "සාමාජිකයන් 9",
+      "10+ members": "සාමාජිකයන් 10+",
+      "Package": "පැකේජය",
+      "Tree house only": "ගස් නිවස පමණයි",
+      "Day out": "දින සංචාරය",
+      "BB — bed & breakfast": "BB — නවාතැන් සහ උදෑසන ආහාරය",
+      "HB — half board": "HB — අර්ධ ආහාර පැකේජය",
+      "FB — full board": "FB — සම්පූර්ණ ආහාර පැකේජය",
+      "Cookery class": "ඉවුම් පිහුම් පන්තිය",
+      "Sigiriya tour": "සීගිරිය සංචාරය",
+      "Ritigala tour": "රිටිගල සංචාරය",
+      "Hurulu Eco Park safari": "හුරුළු ඉකෝ පාර්ක් සෆාරි",
+      "Bicycle tour": "බයිසිකල් සංචාරය",
+      "Hurulu tank boat tour": "හුරුළු වැව බෝට්ටු සංචාරය",
+      "Send on WhatsApp": "WhatsApp හරහා යවන්න",
+      "Only 1 tree house unit and 20 restaurant seats — early enquiries are recommended.": "ගස් නිවසේ ඒකකය 1ක් සහ අවන්හලේ ආසන 20ක් පමණක් ඇත — කලින් විමසීම සුදුසුයි.",
+      "Welcome to The Tusker": "The Tusker වෙත සාදරයෙන් පිළිගනිමු",
+      "A small resort built by hand, around one tree.": "එක් ගසක් වටා අතින් ගොඩනැගූ කුඩා රිසෝර්ට් එකක්.",
+      "The Tusker is a single timber tree house standing on hand-cut poles, with a woven palm roof and a wide open deck that looks straight into the canopy. Everything you see was shaped on site by local craftsmen.": "The Tusker යනු අතින් කපන ලද කණු මත සිටින, තල් කොළ වහලක් සහ ගස් වියන දෙස විවෘතව බලන පුළුල් ඩෙක් එකක් සහිත තනි ලී ගස් නිවසකි. මෙහි ඔබ දකින සියල්ලම දේශීය කලාකරුවන් විසින් ස්ථානයේදීම හැඩගස්වා ඇත.",
+      "Downstairs, our 20-seat restaurant serves village Sri Lankan cooking plated with real care — and if you would like, you cook it with us.": "පහළ මාලාවේ ආසන 20කින් යුත් අපගේ අවන්හල සැලකිල්ලෙන් පිරිනමන ගැමි ශ්‍රී ලාංකීය ආහාර සපයයි — කැමති නම් ඔබට අප සමඟම පිසීමටද හැක.",
+      "Guests, 2 double beds": "අමුත්තන්, ද්විත්ව ඇඳන් 2ක්",
+      "Restaurant seats": "අවන්හල් ආසන",
+      "Local tours arranged": "දේශීය සංචාර සංවිධානය කරයි",
+      "Built into a living tree, not around it.": "ගස වටා නොව, ජීවත්වන ගසකට සම්බන්ධ කර තැනූවකි.",
+      "The Stay": "නවාතැන",
+      "One tree house. The whole forest to yourself.": "එක් ගස් නිවසක්. ඔබටම වෙන් වූ වනයේ සුවය.",
+      "Our only unit": "අපගේ එකම ඒකකය",
+      "The Tusker Tree House": "The Tusker ගස් නිවස",
+      "A raised timber room with an open deck, branch railings and a palm-thatch roof. Sleeps four in two double beds, with the forest on every side.": "විවෘත ඩෙක් එකක්, අතු වැටවල් සහ තල් කොළ වහලක් සහිත ඉහළට ඉදිකළ ලී කාමරයක්. දෙපසම වනය ඇති අතර ද්විත්ව ඇඳන් දෙකකින් සිව්දෙනෙකුට නවාතැන් ගත හැක.",
+      "Beds": "ඇඳන්",
+      "2 double beds": "ද්විත්ව ඇඳන් 2ක්",
+      "Max guests": "උපරිම අමුත්තන්",
+      "4 guests": "අමුත්තන් 4ක්",
+      "Setting": "පරිසරය",
+      "Raised tree house": "ඉහළ ගස් නිවස",
+      "Deck": "ඩෙක් එක",
+      "Private, canopy level": "පුද්ගලික, ගස් වියන මට්ටම",
+      "Hand-built timber room with palm-thatch roof": "තල් කොළ වහලක් සහිත අතින් තැනූ ලී කාමරය",
+      "Private open-air deck above the ground": "භූමියට ඉහළින් විවෘත පුද්ගලික ඩෙක් එක",
+      "Meals served in the restaurant below": "පහළ අවන්හලේ ආහාර පිරිනැමේ",
+      "Village experiences arranged from the property": "දේපළෙන්ම ගැමි අත්දැකීම් සංවිධානය කරයි",
+      "Enquire about dates": "දිනයන් ගැන විමසන්න",
+      "Choose the plan that suits your trip.": "ඔබේ ගමනට ගැළපෙන සැලැස්ම තෝරන්න.",
+      "Every plan is priced for your dates and group size. Send us an enquiry and we confirm the rate on WhatsApp within the day.": "සෑම සැලැස්මකම මිල ඔබේ දිනයන් සහ කණ්ඩායම් ප්‍රමාණය අනුව තීරණය වේ. අපට විමසීමක් එවන්න; අපි එදිනම WhatsApp හරහා ගාස්තුව තහවුරු කරමු.",
+      "Tree House Only": "ගස් නිවස පමණයි",
+      "The tree house for the night, nothing else arranged.": "රාත්‍රිය සඳහා ගස් නිවස පමණි; වෙනත් කිසිවක් සංවිධානය නොකරයි.",
+      "Rate on WhatsApp": "ගාස්තුව WhatsApp හරහා",
+      "Request": "ඉල්ලන්න",
+      "Day Out": "දින සංචාරය",
+      "Daytime access to the deck and restaurant with a village lunch.": "ගැමි දිවා ආහාරයක් සමඟ දිවා කාලයේ ඩෙක් එක සහ අවන්හල භාවිතා කළ හැක.",
+      "Stay with breakfast — fresh fruit, hoppers and tea on the deck.": "උදෑසන ආහාරය සමඟ නවාතැන් — නැවුම් පලතුරු, ආප්ප සහ ඩෙක් එකේ තේ.",
+      "Most booked": "වැඩිපුරම වෙන්කරන",
+      "Half board — breakfast and a plated village dinner.": "අර්ධ ආහාර පැකේජය — උදෑසන ආහාරය සහ පිරිනමන ගැමි රාත්‍රී ආහාරය.",
+      "Full board — all three meals, cooked and served on the property.": "සම්පූර්ණ ආහාර පැකේජය — ආහාර තුනම දේපළේ පිසිනු හා පිරිනමනු ලැබේ.",
+      "Live village cooking class with our chef, then eat what you made.": "අපගේ කුක් සමඟ සජීවී ගැමි ඉවුම් පිහුම් පන්තිය; පසුව ඔබම සාදූ ආහාරය රසවිඳින්න.",
+      "The Restaurant": "අවන්හල",
+      "Village recipes, plated like fine dining.": "ගැමි වට්ටෝරු, සුන්දර ලෙස පිරිනැමීම.",
+      "Twenty seats, one kitchen, and cooking that comes straight out of the village: butterfly-pea rice, jackfruit, coconut sambol, curry leaf and clay-pot spice. Our chef plates every dish by hand.": "ආසන විස්සක්, එක කුස්සියක්, සහ ගමෙන්ම ආ ඉවුම් පිහුම්: නිල් කටරොළු බත්, කොස්, පොල් සම්බෝල, කරපිංචා සහ මැටි භාජනවල සුවඳ. අපගේ කුක් සෑම කෑමක්ම අතින් පිරිනමයි.",
+      "Village sharing platter": "ගැමි බෙදාගැනීමේ පිඟාන",
+      "Octopus & mango": "ඔක්ටපස් සහ අඹ",
+      "Pol roti bites": "පොල් රොටි කැබලි",
+      "Roasted coconut soup": "බැදූ පොල් සුප්",
+      "Village chicken": "ගැමි කුකුල් මස්",
+      "Coconut-shell cutlets": "පොල් කටු කට්ලට්",
+      "Chef's plate": "කුක්ගේ විශේෂ පිඟාන",
+      "Sesame & jaggery": "තල සහ හකුරු",
+      "Clay-pot village buffet": "මැටි භාජන ගැමි බුෆේ",
+      "Earthen cookware": "මැටි භාජන",
+      "Traditional service": "සම්ප්‍රදායික පිරිනැමීම",
+      "Village dining setting": "ගැමි ආහාර පරිසරය",
+      "Cookery class moments": "ඉවුම් පිහුම් පන්තියේ මොහොතන්",
+      "Guests cooking, tasting and sharing.": "අමුත්තන් පිසීම, රස බැලීම සහ බෙදාගැනීම.",
+      "Real moments from the village kitchen, kept in a clean gallery so the restaurant section stays easy to scan.": "ගැමි කුස්සියේ සැබෑ මොහොතන්, අවන්හල් කොටස පහසුවෙන් බලන්න පිරිසිදු ගැලරියක තබා ඇත.",
+      "Please share meal requests before arrival — everything is cooked to order for the guests we have that day.": "පැමිණීමට පෙර ආහාර ඉල්ලීම් දන්වන්න — එදින සිටින අමුත්තන් සඳහා සියල්ල ඇණවුමට අනුව පිසිනු ලැබේ.",
+      "Reserve a table": "මේසයක් වෙන්කරන්න",
+      "Culture, wildlife and village life from one Habarana base.": "එකම හබරණ නවාතැනකින් සංස්කෘතිය, වනජීවීන් සහ ගැමි ජීවිතය.",
+      "Tell us what kind of day you want and we help arrange the route, local guide, jeep, bicycles or boat. Start times are planned around heat, light and current access rules.": "ඔබට අවශ්‍ය දවස කෙසේදැයි අපට කියන්න; මාර්ගය, දේශීය මාර්ගෝපදේශකයා, ජීප් රථය, බයිසිකල් හෝ බෝට්ටුව සංවිධානය කිරීමට අපි උදව් කරමු. උණුසුම, ආලෝකය සහ වත්මන් ප්‍රවේශ නීති අනුව ආරම්භක වේලාවන් සැලසුම් කරයි.",
+      "Ancient capital": "පුරාණ අගනුවර",
+      "Sigiriya Rock Fortress": "සීගිරිය පර්වත බලකොටුව",
+      "Climb the 5th-century Lion Rock, see the water gardens and lion paws, and look across the forest plains from the palace summit.": "5 වන සියවසේ සිංහගිරියට නගින්න, ජල උද්‍යාන සහ සිංහ පාද බලන්න, මාලිගා මුදුනේ සිට වනාන්තර තැනිතලා නරඹන්න.",
+      "Forest monastery": "වනාන්තර ආරාමය",
+      "Ritigala Heritage Visit": "රිටිගල උරුම සංචාරය",
+      "A quiet journey to Ritigala's ancient Buddhist forest-monastery landscape, arranged with respect for protected-area rules.": "ආරක්ෂිත ප්‍රදේශ නීතිවලට ගරු කරමින් සංවිධානය කරන රිටිගල පුරාණ බෞද්ධ වනාන්තර ආරාම පරිසරයට නිහඬ ගමනක්.",
+      "Elephant country": "අලි දේශය",
+      "Hurulu Eco Park Safari": "හුරුළු ඉකෝ පාර්ක් සෆාරි",
+      "A 4WD safari through dry-zone forest and grassland near Habarana, known for Asian elephant sightings in the right season.": "නියම සමයේ ආසියානු අලි දැකගැනීමට ප්‍රසිද්ධ, හබරණ අසල වියළි කලාපීය වනය සහ තෘණ භූමිය හරහා 4WD සෆාරියක්.",
+      "Village route": "ගැමි මාර්ගය",
+      "Bicycle Tour": "බයිසිකල් සංචාරය",
+      "Ride the flat back roads around Habarana past paddy fields, tanks, home gardens and small temples with a local route plan.": "දේශීය මාර්ග සැලැස්මක් සමඟ හබරණ අවට පැතලි පසුබිම් මාර්ගවලින් කුඹුරු, වැව්, ගෙවතු සහ කුඩා විහාර පසුකර බයිසිකල් පදින්න.",
+      "Water and birds": "ජලය සහ පක්ෂීන්",
+      "Hurulu Tank Boat Tour": "හුරුළු වැව බෝට්ටු සංචාරය",
+      "A gentle boat ride on the tank, best in the soft morning or evening light when birds move along the banks.": "පක්ෂීන් වැව් තීරය දිගේ චලනය වන මෘදු උදෑසන හෝ සන්ධ්‍යා ආලෝකයේ හොඳම, වැවේ සන්සුන් බෝට්ටු ගමනක්.",
+      "Hands-on food": "අතින් කරන ආහාර අත්දැකීම",
+      "Live Cookery Class": "සජීවී ඉවුම් පිහුම් පන්තිය",
+      "Grind the spices, cook on a clay hearth and sit down to the meal you helped make in the village restaurant.": "කුළුබඩු අඹරන්න, මැටි උදුනක පිසන්න, පසුව ඔබ උදව් කර සෑදූ ආහාරය ගැමි අවන්හලේදී රසවිඳින්න.",
+      "Tour times, entrance tickets and transport costs can change by season. Message us with your dates so we can recommend the cleanest route for your group.": "සංචාර වේලාවන්, ප්‍රවේශපත්‍ර සහ ප්‍රවාහන වියදම් සමය අනුව වෙනස් විය හැක. ඔබේ දිනයන් අපට එවන්න; ඔබේ කණ්ඩායමට හොඳම මාර්ගය අපි නිර්දේශ කරමු.",
+      "Ask for a tour plan": "සංචාර සැලැස්මක් ඉල්ලන්න",
+      "Gallery": "ගැලරිය",
+      "The tree house, as it stands today.": "අද පවතින ගස් නිවස.",
+      "Nearby from Habarana": "හබරණ සිට ආසන්නයේ",
+      "Stay close to Sigiriya, Ritigala, Hurulu Eco Park and tank country.": "සීගිරිය, රිටිගල, හුරුළු ඉකෝ පාර්ක් සහ වැව් පරිසරයට ආසන්නව නවාතැන් ගන්න.",
+      "The Tusker is positioned for travellers who want a quiet Habarana base with easy access to Sri Lanka's Cultural Triangle, elephant corridors, forest ruins, village roads and calm tank-side mornings.": "ශ්‍රී ලංකාවේ සංස්කෘතික ත්‍රිකෝණය, අලි මාර්ග, වනාන්තර නටබුන්, ගැමි මාර්ග සහ සන්සුන් වැව් උදෑසනට පහසුවෙන් ළඟාවිය හැකි නිහඬ හබරණ නවාතැනක් කැමති සංචාරකයන් සඳහා The Tusker පිහිටා ඇත.",
+      "Hurulu Tank Boat Visit": "හුරුළු වැව බෝට්ටු අත්දැකීම",
+      "See the water before you book.": "වෙන්කරීමට පෙර වැව සහ ගමන බලන්න.",
+      "Short phone videos from the quiet tank visit: calm water, birds and a local boat ride near Habarana.": "හබරණ අසල සන්සුන් වැව, පක්ෂීන් සහ දේශීය බෝට්ටු ගමන පෙන්වන කෙටි දුරකථන වීඩියෝ.",
+      "Boat visit clip": "බෝට්ටු ගමනේ වීඩියෝව",
+      "— calm water and village scenery near Habarana.": "— හබරණ අසල සන්සුන් ජලය සහ ගැමි දර්ශන.",
+      "Small boat route": "කුඩා බෝට්ටු මාර්ගය",
+      "— a closer look at the slow tank-side ride.": "— වැව් තීරයේ මන්දගාමී ගමනට සමීප දසුනක්.",
+      "Nature and water": "ස්වභාවික පරිසරය සහ ජලය",
+      "— a longer glimpse of the Hurulu tank visit.": "— හුරුළු වැව අත්දැකීමට තවත් දිගු දසුනක්.",
+      "Getting here": "මෙතැනට පැමිණීම",
+      "Full arrival directions and a pin are sent with your booking confirmation. Ask us about a tuk-tuk or airport transfer when you enquire.": "ඔබගේ වෙන්කිරීම තහවුරු කරන විට සම්පූර්ණ පැමිණීමේ මාර්ගෝපදේශ සහ ස්ථාන pin එක එවනු ලැබේ. විමසීමේදී tuk-tuk හෝ ගුවන්තොටුපළ මාරු සේවාව ගැන අපෙන් විමසන්න.",
+      "Open in Google Maps": "Google Maps හි විවෘත කරන්න",
+      "Good to know": "දැනගත යුතු දේ",
+      "Reservations": "වෙන්කිරීම්",
+      "Advance booking required": "කලින් වෙන්කිරීම අවශ්‍යයි",
+      "Meals": "ආහාර",
+      "Requests before arrival": "පැමිණීමට පෙර ඉල්ලීම්",
+      "Capacity": "ධාරිතාව",
+      "4 guests · 20 restaurant seats": "අමුත්තන් 4ක් · අවන්හල් ආසන 20ක්",
+      "Before you book": "වෙන්කරීමට පෙර",
+      "Clear details for a confident stay.": "විශ්වාසයෙන් නවාතැන් ගැනීමට පැහැදිලි විස්තර.",
+      "Travellers usually compare comfort, food, location and policies before booking direct. These are the essentials at The Tusker.": "සෘජුව වෙන්කරීමට පෙර සංචාරකයන් සාමාන්‍යයෙන් පහසුව, ආහාර, ස්ථානය සහ නීති සැසඳේ. The Tusker හි මූලික කරුණු මෙවාය.",
+      "Private tree house": "පුද්ගලික ගස් නිවස",
+      "One raised timber unit with two double beds, canopy deck and space for up to four guests.": "ද්විත්ව ඇඳන් දෙකක්, ගස් වියන මට්ටමේ ඩෙක් එකක් සහ අමුත්තන් සිව්දෙනෙකු දක්වා ඉඩ ඇති ඉහළ ලී ඒකකයක්.",
+      "Village restaurant": "ගැමි අවන්හල",
+      "Twenty seats, cooked-to-order Sri Lankan meals and live cookery class options.": "ආසන විස්සක්, ඇණවුමට අනුව පිසින ශ්‍රී ලාංකීය ආහාර සහ සජීවී ඉවුම් පිහුම් පන්ති විකල්ප.",
+      "Easy local trips": "පහසු දේශීය ගමන්",
+      "Ask for Sigiriya, Ritigala, Hurulu Eco Park, bicycle routes and Hurulu tank boat tours.": "සීගිරිය, රිටිගල, හුරුළු ඉකෝ පාර්ක්, බයිසිකල් මාර්ග සහ හුරුළු වැව බෝට්ටු සංචාර ගැන විමසන්න.",
+      "How do I confirm a booking?": "වෙන්කිරීම තහවුරු කරන්නේ කෙසේද?",
+      "Send your details through WhatsApp. The team confirms availability, rate and arrival directions directly.": "ඔබගේ විස්තර WhatsApp හරහා එවන්න. කණ්ඩායම ලබාගැනීමේ හැකියාව, ගාස්තුව සහ පැමිණීමේ මාර්ගෝපදේශ සෘජුව තහවුරු කරයි.",
+      "Can meals and activities be arranged?": "ආහාර සහ ක්‍රියාකාරකම් සංවිධානය කළ හැකිද?",
+      "Yes. Share meal requests and preferred experiences before arrival so the kitchen and local guides can prepare.": "ඔව්. කුස්සිය සහ දේශීය මාර්ගෝපදේශකයන් සූදානම් වීමට, පැමිණීමට පෙර ආහාර ඉල්ලීම් සහ කැමති අත්දැකීම් දන්වන්න.",
+      "Is this better for couples, families or small groups?": "මෙය යුවළ, පවුල් හෝ කුඩා කණ්ඩායම් සඳහා හොඳද?",
+      "The tree house works best for couples, families and small groups of up to four staying together.": "ගස් නිවස යුවළ, පවුල් සහ එකට නවාතැන් ගන්නා සිව්දෙනෙකු දක්වා කුඩා කණ්ඩායම් සඳහා වඩාත් සුදුසුය.",
+      "Book direct. Talk to us on WhatsApp.": "සෘජුව වෙන්කරන්න. WhatsApp හරහා අප සමඟ කතා කරන්න.",
+      "Send your dates, the number of guests and what you would like to do — we reply with the rate and hold the tree house for you.": "ඔබේ දිනයන්, අමුත්තන් ගණන සහ කිරීමට කැමති දේ අපට එවන්න — අපි ගාස්තුව සමඟ පිළිතුරුදී ගස් නිවස ඔබට තබා දෙමු.",
+      "Message on WhatsApp": "WhatsApp පණිවිඩයක් යවන්න",
+      "WhatsApp / Phone": "WhatsApp / දුරකථන",
+      "Where we are": "අප සිටින ස්ථානය",
+      "Tree house stays, village food and hand-arranged experiences.": "ගස් නිවාස නවාතැන්, ගැමි ආහාර සහ අතින් සැලසුම් කළ අත්දැකීම්.",
+      "Developed by": "වෙබ් අඩවිය සංවර්ධනය කළේ"
+    },
+    ta: {
+      "Stay": "தங்குமிடம்",
+      "Packages": "தொகுப்புகள்",
+      "Restaurant": "உணவகம்",
+      "Experiences": "அனுபவங்கள்",
+      "Tours": "சுற்றுலாக்கள்",
+      "Boat video": "படகு வீடியோ",
+      "Contact": "தொடர்பு",
+      "Book Now": "இப்போது முன்பதிவு",
+      "Habarana  ·  Sri Lanka": "ஹபரண · இலங்கை",
+      "Sleep among the treetops.": "மர உச்சிகளின் நடுவில் உறங்குங்கள்.",
+      "A timber tree house built into a living tree, village food cooked in front of you, and the quiet of the forest all night long.": "உயிருடன் நிற்கும் மரத்துடன் கட்டப்பட்ட மர வீடு, உங்கள் முன்னிலையில் சமைக்கப்படும் கிராமிய உணவு, முழு இரவும் காட்டு அமைதி.",
+      "Check availability": "கிடைப்பை பார்க்கவும்",
+      "See the tree house": "மர வீட்டைப் பாருங்கள்",
+      "Booking enquiry": "முன்பதிவு விசாரணை",
+      "Rates and availability are confirmed directly on WhatsApp.": "கட்டணமும் கிடைப்பும் WhatsApp மூலம் நேரடியாக உறுதிப்படுத்தப்படும்.",
+      "Name": "பெயர்",
+      "WhatsApp number": "WhatsApp எண்",
+      "Email": "மின்னஞ்சல்",
+      "ID number": "அடையாள அட்டை எண்",
+      "Passport number": "கடவுச்சீட்டு எண்",
+      "City": "நகரம்",
+      "Country": "நாடு",
+      "Gender": "பாலினம்",
+      "Select": "தேர்வு செய்யவும்",
+      "Male": "ஆண்",
+      "Female": "பெண்",
+      "Other / prefer not to say": "மற்றது / சொல்ல விரும்பவில்லை",
+      "Check-in": "வருகை பதிவு",
+      "Check-out": "புறப்பாடு பதிவு",
+      "How many members": "உறுப்பினர்கள் எண்ணிக்கை",
+      "1 member": "1 உறுப்பினர்",
+      "2 members": "2 உறுப்பினர்கள்",
+      "3 members": "3 உறுப்பினர்கள்",
+      "4 members": "4 உறுப்பினர்கள்",
+      "5 members": "5 உறுப்பினர்கள்",
+      "6 members": "6 உறுப்பினர்கள்",
+      "7 members": "7 உறுப்பினர்கள்",
+      "8 members": "8 உறுப்பினர்கள்",
+      "9 members": "9 உறுப்பினர்கள்",
+      "10+ members": "10+ உறுப்பினர்கள்",
+      "Package": "தொகுப்பு",
+      "Tree house only": "மர வீடு மட்டும்",
+      "Day out": "ஒருநாள் அனுபவம்",
+      "BB — bed & breakfast": "BB — தங்குமிடம் மற்றும் காலை உணவு",
+      "HB — half board": "HB — அரை உணவு தொகுப்பு",
+      "FB — full board": "FB — முழு உணவு தொகுப்பு",
+      "Cookery class": "சமையல் வகுப்பு",
+      "Sigiriya tour": "சிகிரியா சுற்றுலா",
+      "Ritigala tour": "ரிடிகல சுற்றுலா",
+      "Hurulu Eco Park safari": "ஹுருலு இக்கோ பார்க் சபாரி",
+      "Bicycle tour": "மிதிவண்டி சுற்றுலா",
+      "Hurulu tank boat tour": "ஹுருலு குளம் படகு சுற்றுலா",
+      "Send on WhatsApp": "WhatsApp-ல் அனுப்பவும்",
+      "Only 1 tree house unit and 20 restaurant seats — early enquiries are recommended.": "ஒரு மர வீடு மற்றும் 20 உணவக இருக்கைகள் மட்டுமே உள்ளன — முன்கூட்டியே விசாரிப்பது நல்லது.",
+      "Welcome to The Tusker": "The Tusker-க்கு வரவேற்கிறோம்",
+      "A small resort built by hand, around one tree.": "ஒரு மரத்தை மையமாக வைத்து கையால் உருவாக்கப்பட்ட சிறிய ரிசார்ட்.",
+      "The Tusker is a single timber tree house standing on hand-cut poles, with a woven palm roof and a wide open deck that looks straight into the canopy. Everything you see was shaped on site by local craftsmen.": "The Tusker என்பது கையால் வெட்டிய தூண்களில் நிற்கும், பனை ஓலை கூரை மற்றும் மர நிழலை நோக்கும் அகன்ற திறந்த டெக்குடன் கூடிய ஒற்றை மர வீடு. நீங்கள் காணும் அனைத்தும் உள்ளூர் கைவினைஞர்களால் இடத்திலேயே வடிவமைக்கப்பட்டது.",
+      "Downstairs, our 20-seat restaurant serves village Sri Lankan cooking plated with real care — and if you would like, you cook it with us.": "கீழ்தளத்தில் உள்ள 20 இருக்கைகள் கொண்ட உணவகம் அன்புடன் பரிமாறப்படும் கிராமிய இலங்கை உணவை வழங்குகிறது — விரும்பினால் எங்களுடன் சேர்ந்து நீங்கள் சமைக்கலாம்.",
+      "Guests, 2 double beds": "விருந்தினர்கள், 2 இரட்டை படுக்கைகள்",
+      "Restaurant seats": "உணவக இருக்கைகள்",
+      "Local tours arranged": "உள்ளூர் சுற்றுலா ஏற்பாடு",
+      "Built into a living tree, not around it.": "மரத்தைச் சுற்றி அல்ல; உயிருள்ள மரத்துடன் கட்டப்பட்டது.",
+      "The Stay": "தங்கும் அனுபவம்",
+      "One tree house. The whole forest to yourself.": "ஒரு மர வீடு. முழு காட்டு அமைதி உங்களுக்கே.",
+      "Our only unit": "எங்களின் ஒரே அலகு",
+      "The Tusker Tree House": "The Tusker மர வீடு",
+      "A raised timber room with an open deck, branch railings and a palm-thatch roof. Sleeps four in two double beds, with the forest on every side.": "திறந்த டெக், கிளை கைப்பிடிகள் மற்றும் பனை ஓலை கூரையுடன் உயர்த்திக் கட்டப்பட்ட மர அறை. இரண்டு இரட்டை படுக்கைகளில் நான்கு பேர் தங்கலாம்; எல்லா பக்கமும் காடு.",
+      "Beds": "படுக்கைகள்",
+      "2 double beds": "2 இரட்டை படுக்கைகள்",
+      "Max guests": "அதிகபட்ச விருந்தினர்கள்",
+      "4 guests": "4 விருந்தினர்கள்",
+      "Setting": "சூழல்",
+      "Raised tree house": "உயர்த்தப்பட்ட மர வீடு",
+      "Deck": "டெக்",
+      "Private, canopy level": "தனிப்பட்டது, மர நிழல் மட்டம்",
+      "Hand-built timber room with palm-thatch roof": "பனை ஓலை கூரையுடன் கையால் கட்டப்பட்ட மர அறை",
+      "Private open-air deck above the ground": "தரையிலிருந்து மேலே தனிப்பட்ட திறந்த டெக்",
+      "Meals served in the restaurant below": "கீழே உள்ள உணவகத்தில் உணவு பரிமாறப்படும்",
+      "Village experiences arranged from the property": "இடத்திலிருந்தே கிராமிய அனுபவங்கள் ஏற்பாடு செய்யப்படும்",
+      "Enquire about dates": "தேதிகளை விசாரிக்கவும்",
+      "Choose the plan that suits your trip.": "உங்கள் பயணத்திற்கு ஏற்ற திட்டத்தைத் தேர்வு செய்யுங்கள்.",
+      "Every plan is priced for your dates and group size. Send us an enquiry and we confirm the rate on WhatsApp within the day.": "ஒவ்வொரு திட்டத்தின் கட்டணமும் உங்கள் தேதிகள் மற்றும் குழு அளவின்படி நிர்ணயிக்கப்படும். எங்களுக்கு விசாரணை அனுப்புங்கள்; அதே நாளில் WhatsApp மூலம் கட்டணத்தை உறுதிப்படுத்துகிறோம்.",
+      "Tree House Only": "மர வீடு மட்டும்",
+      "The tree house for the night, nothing else arranged.": "இரவு தங்குவதற்கு மர வீடு மட்டும்; வேறு ஏற்பாடுகள் இல்லை.",
+      "Rate on WhatsApp": "கட்டணம் WhatsApp-ல்",
+      "Request": "கோரிக்கை",
+      "Day Out": "ஒருநாள் அனுபவம்",
+      "Daytime access to the deck and restaurant with a village lunch.": "கிராமிய மதிய உணவுடன் பகலில் டெக் மற்றும் உணவக அணுகல்.",
+      "Stay with breakfast — fresh fruit, hoppers and tea on the deck.": "காலை உணவுடன் தங்குதல் — புதிய பழம், ஹாப்பர் மற்றும் டெக்கில் தேநீர்.",
+      "Most booked": "அதிகம் முன்பதிவு செய்யப்பட்டது",
+      "Half board — breakfast and a plated village dinner.": "அரை உணவு தொகுப்பு — காலை உணவு மற்றும் பரிமாறப்படும் கிராமிய இரவு உணவு.",
+      "Full board — all three meals, cooked and served on the property.": "முழு உணவு தொகுப்பு — மூன்று வேளையும் இடத்திலேயே சமைத்து பரிமாறப்படும்.",
+      "Live village cooking class with our chef, then eat what you made.": "எங்கள் சமையலருடன் நேரடி கிராமிய சமையல் வகுப்பு; பிறகு நீங்கள் செய்த உணவை சுவையுங்கள்.",
+      "The Restaurant": "உணவகம்",
+      "Village recipes, plated like fine dining.": "கிராமிய சமையல், அழகான பரிமாறலில்.",
+      "Twenty seats, one kitchen, and cooking that comes straight out of the village: butterfly-pea rice, jackfruit, coconut sambol, curry leaf and clay-pot spice. Our chef plates every dish by hand.": "இருபது இருக்கைகள், ஒரு சமையலறை, கிராமத்திலிருந்து நேராக வரும் சுவைகள்: பட்டர்பிளை-பீ சாதம், பலாப்பழம், தேங்காய் சம்போல், கருவேப்பிலை மற்றும் மண்பானை மசாலா. எங்கள் சமையலர் ஒவ்வொரு உணவையும் கையால் பரிமாறுகிறார்.",
+      "Village sharing platter": "கிராமிய பகிர்வு தட்டு",
+      "Octopus & mango": "ஆக்டோபஸ் மற்றும் மாம்பழம்",
+      "Pol roti bites": "பொல் ரொட்டி துண்டுகள்",
+      "Roasted coconut soup": "வறுத்த தேங்காய் சூப்",
+      "Village chicken": "கிராமிய கோழி",
+      "Coconut-shell cutlets": "தேங்காய் ஓடு கட்லெட்",
+      "Chef's plate": "சமையலரின் சிறப்பு தட்டு",
+      "Sesame & jaggery": "எள் மற்றும் வெல்லம்",
+      "Clay-pot village buffet": "மண்பானை கிராமிய பஃபே",
+      "Earthen cookware": "மண் சமையல் பாத்திரங்கள்",
+      "Traditional service": "பாரம்பரிய பரிமாறல்",
+      "Village dining setting": "கிராமிய உணவு சூழல்",
+      "Cookery class moments": "சமையல் வகுப்பு தருணங்கள்",
+      "Guests cooking, tasting and sharing.": "விருந்தினர்கள் சமைத்து, சுவைத்து, பகிரும் தருணங்கள்.",
+      "Real moments from the village kitchen, kept in a clean gallery so the restaurant section stays easy to scan.": "கிராமிய சமையலறையின் உண்மையான தருணங்கள், உணவகப் பகுதி எளிதாக பார்க்கும் வகையில் சுத்தமான கேலரியில்.",
+      "Please share meal requests before arrival — everything is cooked to order for the guests we have that day.": "வருகைக்கு முன் உணவு கோரிக்கைகளைத் தெரிவிக்கவும் — அன்றைய விருந்தினர்களுக்காக அனைத்தும் ஆர்டர் படி சமைக்கப்படும்.",
+      "Reserve a table": "மேசை முன்பதிவு",
+      "Culture, wildlife and village life from one Habarana base.": "ஒரே ஹபரண தளத்திலிருந்து கலாசாரம், வனவிலங்கு மற்றும் கிராமிய வாழ்க்கை.",
+      "Tell us what kind of day you want and we help arrange the route, local guide, jeep, bicycles or boat. Start times are planned around heat, light and current access rules.": "நீங்கள் விரும்பும் நாளை எங்களிடம் சொல்லுங்கள்; பாதை, உள்ளூர் வழிகாட்டி, ஜீப், மிதிவண்டிகள் அல்லது படகு ஏற்பாடு செய்ய உதவுகிறோம். வெப்பம், வெளிச்சம் மற்றும் தற்போதைய அணுகல் விதிகளைப் பொருத்து தொடக்க நேரங்கள் திட்டமிடப்படும்.",
+      "Ancient capital": "பண்டைய தலைநகர்",
+      "Sigiriya Rock Fortress": "சிகிரியா பாறைக் கோட்டை",
+      "Climb the 5th-century Lion Rock, see the water gardens and lion paws, and look across the forest plains from the palace summit.": "5ஆம் நூற்றாண்டு லயன் ராக்கில் ஏறி, நீர்த் தோட்டங்கள் மற்றும் சிங்கப் பாதங்களைப் பார்த்து, அரண்மனை உச்சியிலிருந்து காட்டு சமவெளிகளை ரசிக்கலாம்.",
+      "Forest monastery": "காட்டு மடாலயம்",
+      "Ritigala Heritage Visit": "ரிடிகல பாரம்பரிய பயணம்",
+      "A quiet journey to Ritigala's ancient Buddhist forest-monastery landscape, arranged with respect for protected-area rules.": "பாதுகாக்கப்பட்ட பகுதி விதிகளை மதித்து ஏற்பாடு செய்யப்படும் ரிடிகலாவின் பண்டைய பௌத்த காட்டு மடாலய நிலப்பரப்பிற்கு அமைதியான பயணம்.",
+      "Elephant country": "யானைகளின் நிலம்",
+      "Hurulu Eco Park Safari": "ஹுருலு இக்கோ பார்க் சபாரி",
+      "A 4WD safari through dry-zone forest and grassland near Habarana, known for Asian elephant sightings in the right season.": "சரியான பருவத்தில் ஆசிய யானைகளை பார்க்க அறியப்பட்ட, ஹபரண அருகிலுள்ள உலர் வலய காடு மற்றும் புல்வெளி வழியாக 4WD சபாரி.",
+      "Village route": "கிராமிய பாதை",
+      "Bicycle Tour": "மிதிவண்டி சுற்றுலா",
+      "Ride the flat back roads around Habarana past paddy fields, tanks, home gardens and small temples with a local route plan.": "உள்ளூர் பாதை திட்டத்துடன் ஹபரண சுற்றிய சமமான பின்புற சாலைகளில், நெல் வயல்கள், குளங்கள், வீட்டு தோட்டங்கள் மற்றும் சிறிய கோயில்களை கடந்துசெல்லும் மிதிவண்டி பயணம்.",
+      "Water and birds": "நீர் மற்றும் பறவைகள்",
+      "Hurulu Tank Boat Tour": "ஹுருலு குளம் படகு சுற்றுலா",
+      "A gentle boat ride on the tank, best in the soft morning or evening light when birds move along the banks.": "பறவைகள் கரையோரம் நகரும் மென்மையான காலை அல்லது மாலை வெளிச்சத்தில் சிறந்த, குளத்தில் அமைதியான படகு பயணம்.",
+      "Hands-on food": "நேரடி சமையல் அனுபவம்",
+      "Live Cookery Class": "நேரடி சமையல் வகுப்பு",
+      "Grind the spices, cook on a clay hearth and sit down to the meal you helped make in the village restaurant.": "மசாலாவை அரைத்து, மண் அடுப்பில் சமைத்து, நீங்கள் உதவி செய்த உணவை கிராமிய உணவகத்தில் அமர்ந்து சுவையுங்கள்.",
+      "Tour times, entrance tickets and transport costs can change by season. Message us with your dates so we can recommend the cleanest route for your group.": "சுற்றுலா நேரம், நுழைவுச் சீட்டுகள் மற்றும் போக்குவரத்து செலவுகள் பருவத்தின்படி மாறலாம். உங்கள் தேதிகளை அனுப்புங்கள்; உங்கள் குழுவிற்கு ஏற்ற தெளிவான பாதையை பரிந்துரைக்கிறோம்.",
+      "Ask for a tour plan": "சுற்றுலா திட்டம் கேளுங்கள்",
+      "Gallery": "படத் தொகுப்பு",
+      "The tree house, as it stands today.": "இன்றைய மர வீடு.",
+      "Nearby from Habarana": "ஹபரண அருகிலுள்ளவை",
+      "Stay close to Sigiriya, Ritigala, Hurulu Eco Park and tank country.": "சிகிரியா, ரிடிகல, ஹுருலு இக்கோ பார்க் மற்றும் குளப் பகுதியிற்கு அருகில் தங்குங்கள்.",
+      "The Tusker is positioned for travellers who want a quiet Habarana base with easy access to Sri Lanka's Cultural Triangle, elephant corridors, forest ruins, village roads and calm tank-side mornings.": "இலங்கையின் கலாச்சார முக்கோணம், யானை வழித்தடங்கள், காட்டு இடிபாடுகள், கிராமச் சாலைகள் மற்றும் அமைதியான குளக்கரை காலைகளை எளிதாக அணுக விரும்பும் பயணிகளுக்கான அமைதியான ஹபரண தளமாக The Tusker அமைந்துள்ளது.",
+      "Hurulu Tank Boat Visit": "ஹுருலு குளம் படகு அனுபவம்",
+      "See the water before you book.": "முன்பதிவுக்கு முன் நீர்நிலையைப் பாருங்கள்.",
+      "Short phone videos from the quiet tank visit: calm water, birds and a local boat ride near Habarana.": "ஹபரண அருகிலுள்ள அமைதியான குளம், பறவைகள் மற்றும் உள்ளூர் படகு பயணத்தை காட்டும் குறுகிய கைபேசி வீடியோக்கள்.",
+      "Boat visit clip": "படகு பயண காட்சி",
+      "— calm water and village scenery near Habarana.": "— ஹபரண அருகிலுள்ள அமைதியான நீரும் கிராமிய காட்சியும்.",
+      "Small boat route": "சிறிய படகு பாதை",
+      "— a closer look at the slow tank-side ride.": "— குளக்கரை மெதுவான பயணத்தின் நெருக்கமான காட்சி.",
+      "Nature and water": "இயற்கையும் நீரும்",
+      "— a longer glimpse of the Hurulu tank visit.": "— ஹுருலு குளம் அனுபவத்தின் நீளமான பார்வை.",
+      "Getting here": "இங்கே வருவது",
+      "Full arrival directions and a pin are sent with your booking confirmation. Ask us about a tuk-tuk or airport transfer when you enquire.": "உங்கள் முன்பதிவு உறுதிப்படுத்தும்போது முழு வருகை வழிமுறைகளும் இடம் pin-உமும் அனுப்பப்படும். விசாரிக்கும் போது tuk-tuk அல்லது விமான நிலைய மாற்றுச் சேவையைப் பற்றி கேளுங்கள்.",
+      "Open in Google Maps": "Google Maps-ல் திறக்கவும்",
+      "Good to know": "தெரிந்துகொள்ள வேண்டியது",
+      "Reservations": "முன்பதிவுகள்",
+      "Advance booking required": "முன்கூட்டியே முன்பதிவு அவசியம்",
+      "Meals": "உணவு",
+      "Requests before arrival": "வருகைக்கு முன் கோரிக்கைகள்",
+      "Capacity": "திறன்",
+      "4 guests · 20 restaurant seats": "4 விருந்தினர்கள் · 20 உணவக இருக்கைகள்",
+      "Before you book": "முன்பதிவுக்கு முன்",
+      "Clear details for a confident stay.": "நம்பிக்கையுடன் தங்க தெளிவான விவரங்கள்.",
+      "Travellers usually compare comfort, food, location and policies before booking direct. These are the essentials at The Tusker.": "நேரடியாக முன்பதிவு செய்வதற்கு முன் பயணிகள் பொதுவாக வசதி, உணவு, இடம் மற்றும் கொள்கைகளை ஒப்பிடுவார்கள். The Tusker-இன் முக்கிய விவரங்கள் இவை.",
+      "Private tree house": "தனியார் மர வீடு",
+      "One raised timber unit with two double beds, canopy deck and space for up to four guests.": "இரண்டு இரட்டை படுக்கைகள், மர நிழல் டெக் மற்றும் நான்கு விருந்தினர்கள் வரை இடமுள்ள உயர்த்தப்பட்ட மர அலகு.",
+      "Village restaurant": "கிராமிய உணவகம்",
+      "Twenty seats, cooked-to-order Sri Lankan meals and live cookery class options.": "இருபது இருக்கைகள், ஆர்டர் படி சமைக்கப்படும் இலங்கை உணவு மற்றும் நேரடி சமையல் வகுப்பு விருப்பங்கள்.",
+      "Easy local trips": "எளிய உள்ளூர் பயணங்கள்",
+      "Ask for Sigiriya, Ritigala, Hurulu Eco Park, bicycle routes and Hurulu tank boat tours.": "சிகிரியா, ரிடிகல, ஹுருலு இக்கோ பார்க், மிதிவண்டி பாதைகள் மற்றும் ஹுருலு குளம் படகு சுற்றுலா பற்றி கேளுங்கள்.",
+      "How do I confirm a booking?": "முன்பதிவை எப்படி உறுதிப்படுத்துவது?",
+      "Send your details through WhatsApp. The team confirms availability, rate and arrival directions directly.": "உங்கள் விவரங்களை WhatsApp மூலம் அனுப்புங்கள். குழு கிடைப்பை, கட்டணத்தை மற்றும் வருகை வழிமுறைகளை நேரடியாக உறுதிப்படுத்தும்.",
+      "Can meals and activities be arranged?": "உணவும் செயல்பாடுகளும் ஏற்பாடு செய்ய முடியுமா?",
+      "Yes. Share meal requests and preferred experiences before arrival so the kitchen and local guides can prepare.": "ஆம். சமையலறையும் உள்ளூர் வழிகாட்டிகளும் தயாராக இருக்க, வருகைக்கு முன் உணவு கோரிக்கைகள் மற்றும் விருப்ப அனுபவங்களை பகிருங்கள்.",
+      "Is this better for couples, families or small groups?": "இது ஜோடிகள், குடும்பங்கள் அல்லது சிறிய குழுக்களுக்கு ஏற்றதா?",
+      "The tree house works best for couples, families and small groups of up to four staying together.": "மர வீடு ஜோடிகள், குடும்பங்கள் மற்றும் ஒன்றாக தங்கும் நான்கு பேர் வரை உள்ள சிறிய குழுக்களுக்கு சிறந்தது.",
+      "Book direct. Talk to us on WhatsApp.": "நேரடியாக முன்பதிவு செய்யுங்கள். WhatsApp-ல் எங்களிடம் பேசுங்கள்.",
+      "Send your dates, the number of guests and what you would like to do — we reply with the rate and hold the tree house for you.": "உங்கள் தேதிகள், விருந்தினர்கள் எண்ணிக்கை மற்றும் நீங்கள் செய்ய விரும்புவது ஆகியவற்றை அனுப்புங்கள் — கட்டணத்துடன் பதிலளித்து மர வீட்டை உங்களுக்காக வைத்திருப்போம்.",
+      "Message on WhatsApp": "WhatsApp செய்தி அனுப்பவும்",
+      "WhatsApp / Phone": "WhatsApp / தொலைபேசி",
+      "Where we are": "எங்கள் இருப்பிடம்",
+      "Tree house stays, village food and hand-arranged experiences.": "மர வீடு தங்குமிடம், கிராமிய உணவு மற்றும் நேரடியாக ஏற்பாடு செய்யப்படும் அனுபவங்கள்.",
+      "Developed by": "இணையதளத்தை உருவாக்கியது"
+    }
+  };
+
+  const placeholders = {
+    si: {
+      "Your name": "ඔබේ නම",
+      "you@example.com": "you@example.com",
+      "National ID": "ජාතික හැඳුනුම්පත",
+      "Passport no.": "විදේශ ගමන් බලපත්‍ර අංකය",
+      "Your city": "ඔබේ නගරය",
+      "Your country": "ඔබේ රට"
+    },
+    ta: {
+      "Your name": "உங்கள் பெயர்",
+      "you@example.com": "you@example.com",
+      "National ID": "தேசிய அடையாள அட்டை",
+      "Passport no.": "கடவுச்சீட்டு எண்",
+      "Your city": "உங்கள் நகரம்",
+      "Your country": "உங்கள் நாடு"
+    }
+  };
+
+  function rememberOriginalText(node) {
+    if (node.nodeType === Node.TEXT_NODE && !node.parentElement?.closest("script, style, textarea")) {
+      if (node.nodeValue.trim() && !node.__i18nOriginal) node.__i18nOriginal = node.nodeValue;
+    }
+  }
+
+  function rememberOriginalAttrs(el) {
+    if (el.nodeType !== Node.ELEMENT_NODE) return;
+    if (el.hasAttribute("placeholder") && !el.dataset.i18nPlaceholder) {
+      el.dataset.i18nPlaceholder = el.getAttribute("placeholder");
+    }
+    if (el.tagName === "OPTION" && !el.dataset.i18nOriginal) {
+      el.dataset.i18nOriginal = el.textContent;
+    }
+  }
+
+  function translateTextNode(node, lang) {
+    rememberOriginalText(node);
+    if (!node.__i18nOriginal) return;
+    const original = node.__i18nOriginal;
+    const trimmed = original.trim();
+    const translated = lang === "en" ? trimmed : t[lang]?.[trimmed];
+    if (!translated) {
+      node.nodeValue = original;
+      return;
+    }
+    const lead = original.match(/^\s*/)[0];
+    const tail = original.match(/\s*$/)[0];
+    node.nodeValue = lead + translated + tail;
+  }
+
+  function applyLanguage(lang) {
+    const chosen = ["en", "si", "ta"].includes(lang) ? lang : "en";
+    document.documentElement.dataset.tuskerLanguage = chosen;
+    document.documentElement.lang = chosen === "si" ? "si-LK" : chosen === "ta" ? "ta-LK" : "en";
+    document.title = pageTitle[chosen];
+    document.querySelectorAll("[data-lang-switch]").forEach((btn) => {
+      btn.setAttribute("aria-pressed", btn.dataset.langSwitch === chosen ? "true" : "false");
+    });
+
+    document.querySelectorAll("*").forEach((el) => {
+      rememberOriginalAttrs(el);
+      if (el.dataset.i18nPlaceholder) {
+        el.setAttribute("placeholder", chosen === "en" ? el.dataset.i18nPlaceholder : (placeholders[chosen]?.[el.dataset.i18nPlaceholder] || el.dataset.i18nPlaceholder));
+      }
+      if (el.tagName === "OPTION" && el.dataset.i18nOriginal) {
+        const original = el.dataset.i18nOriginal.trim();
+        el.textContent = chosen === "en" ? original : (t[chosen]?.[original] || original);
+      }
+    });
+
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach((node) => translateTextNode(node, chosen));
+    try { localStorage.setItem("tuskerLanguage", chosen); } catch (error) {}
+  }
+
+  function initLanguageSwitcher() {
+    if (!document.documentElement.dataset.tuskerLanguageBound) {
+      document.documentElement.dataset.tuskerLanguageBound = "true";
+      document.addEventListener("click", (event) => {
+        const btn = event.target.closest("[data-lang-switch]");
+        if (!btn) return;
+        event.preventDefault();
+        applyLanguage(btn.dataset.langSwitch);
+      });
+    }
+    let savedLanguage = "en";
+    try { savedLanguage = localStorage.getItem("tuskerLanguage") || "en"; } catch (error) {}
+    applyLanguage(savedLanguage);
+    window.setTimeout(() => applyLanguage(document.documentElement.dataset.tuskerLanguage || savedLanguage), 250);
+    window.setTimeout(() => applyLanguage(document.documentElement.dataset.tuskerLanguage || savedLanguage), 900);
+  }
+
+  window.tuskerApplyLanguage = applyLanguage;
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initLanguageSwitcher);
+  } else {
+    initLanguageSwitcher();
+  }
+})();
+</script>
+<script data-run-after-dc>
+(function () {
+  function markVideo(video) {
+    const wrap = video.closest(".boat-video-media");
+    if (!wrap) return;
+    wrap.classList.toggle("is-playing", !video.paused && !video.ended);
+  }
+
+  function tryPlay(video) {
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.controls = true;
+    video.setAttribute("muted", "");
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
+    video.setAttribute("controls", "");
+    if (video.readyState === 0) video.load();
+    const attempt = video.play();
+    if (attempt && typeof attempt.catch === "function") {
+      attempt.catch(() => markVideo(video));
+    }
+    markVideo(video);
+  }
+
+  function startBoatVideos() {
+    document.querySelectorAll("[data-boat-video]").forEach((video) => {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.controls = true;
+      video.setAttribute("controls", "");
+      video.addEventListener("play", () => markVideo(video));
+      video.addEventListener("pause", () => markVideo(video));
+      video.addEventListener("ended", () => markVideo(video));
+      const play = () => tryPlay(video);
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) play();
+          });
+        }, { threshold: 0.25 });
+        observer.observe(video);
+        window.setTimeout(play, 500);
+      } else {
+        play();
+      }
+    });
+  }
+
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest(".boat-play-button");
+    if (!button) return;
+    const video = button.closest(".boat-video-media")?.querySelector("video");
+    if (video) tryPlay(video);
+  });
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startBoatVideos);
+  } else {
+    startBoatVideos();
+  }
+})();
 </script>
 </body>
 </html>
