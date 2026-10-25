@@ -82,6 +82,24 @@
   .boat-video-media { position:relative; background:#0F2A20; }
   .boat-play-button { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:58px; height:58px; border:1px solid rgba(247,243,234,0.82); border-radius:50%; background:rgba(15,42,32,0.72); color:#F7F3EA; display:grid; place-items:center; font-size:20px; line-height:1; cursor:pointer; box-shadow:0 12px 28px rgba(0,0,0,0.25); }
   .boat-video-media.is-playing .boat-play-button { opacity:0; pointer-events:none; }
+  .th-tabs { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+  .th-tab { border:1px solid rgba(247,243,234,0.22); background:transparent; color:#D6E0D8; cursor:pointer; border-radius:999px; padding:10px 18px; font-family:Karla, system-ui, sans-serif; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; }
+  .th-tab:hover { border-color:#C0913F; color:#C0913F; }
+  .th-tab[aria-pressed="true"] { background:#C0913F; border-color:#C0913F; color:#0B1A12; }
+  .th-grid { display:none; grid-template-columns:repeat(auto-fill, minmax(min(100%,200px),1fr)); gap:10px; }
+  .th-grid.is-active { display:grid; }
+  .th-thumb { padding:0; border:0; background:#0F2A20; cursor:zoom-in; display:block; overflow:hidden; }
+  .th-thumb img { width:100%; height:250px; object-fit:cover; transition:transform .35s ease, opacity .35s ease; }
+  .th-thumb:hover img { transform:scale(1.04); opacity:0.92; }
+  .th-lightbox { position:fixed; inset:0; z-index:200; background:rgba(5,14,9,0.94); display:none; align-items:center; justify-content:center; padding:56px 64px; }
+  .th-lightbox.is-open { display:flex; }
+  .th-lightbox img { max-width:100%; max-height:100%; object-fit:contain; box-shadow:0 20px 60px rgba(0,0,0,0.5); }
+  .th-lightbox button { position:absolute; border:1px solid rgba(247,243,234,0.5); background:rgba(15,42,32,0.7); color:#F7F3EA; width:48px; height:48px; border-radius:50%; font-size:22px; line-height:1; cursor:pointer; display:grid; place-items:center; }
+  .th-lightbox button:hover { background:#C0913F; color:#0B1A12; border-color:#C0913F; }
+  .th-lb-close { top:14px; right:14px; }
+  .th-lb-prev { left:10px; top:50%; transform:translateY(-50%); }
+  .th-lb-next { right:10px; top:50%; transform:translateY(-50%); }
+  .th-lb-count { position:absolute; bottom:16px; left:50%; transform:translateX(-50%); color:#B4C5B9; font-size:13px; letter-spacing:0.12em; margin:0; }
   .center-copy { text-align:center !important; margin-left:auto !important; margin-right:auto !important; }
   #packages > div > p:first-child,
   #packages > div > h2,
@@ -124,6 +142,11 @@
     .restaurant-room-gallery img { min-height:0 !important; height:260px !important; }
     .cookery-guest-gallery { grid-template-columns:1fr 1fr !important; }
     .cookery-guest-gallery img { height:220px !important; }
+    .th-grid { grid-template-columns:1fr 1fr !important; gap:8px !important; }
+    .th-thumb img { height:200px !important; }
+    .th-tab { padding:9px 14px !important; font-size:12px !important; }
+    .th-lightbox { padding:64px 10px 56px !important; }
+    .th-lb-prev, .th-lb-next { top:auto !important; bottom:6px !important; transform:none !important; }
     .boat-video-grid { grid-template-columns:1fr !important; }
     .boat-video-grid video { max-height:560px !important; }
     footer > div { align-items:center !important; text-align:center !important; justify-content:center !important; }
@@ -141,7 +164,8 @@
   "image": [
     "images/hero-night.jpg",
     "images/treehouse-golden.jpg",
-    "images/treehouse-full.jpg",
+    "images/treehouse-night-01.jpeg",
+    "images/treehouse-bedroom-01.jpeg",
     "images/food-platter.jpg",
     "images/cooking-class.jpg",
     "images/restaurant-clay-buffet-wide.jpeg",
@@ -357,9 +381,9 @@
       <h2 style="margin:0 0 46px; font-family:Marcellus, serif; font-weight:400; font-size:clamp(30px,4vw,50px); line-height:1.12; max-width:24ch;">One tree house. The whole forest to yourself.</h2>
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(330px,1fr)); gap:clamp(28px,4vw,56px); align-items:stretch;">
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; min-height:clamp(320px,44vw,520px);">
-          <img src="images/treehouse-stairs.jpg" alt="Steel stair leading up to the tree house deck" loading="lazy" decoding="async" style="width:100%; height:100%; min-height:160px; object-fit:cover; grid-row:span 2;" />
-          <img src="images/treehouse-balcony.jpg" alt="Timber deck and branch railing" loading="lazy" decoding="async" style="width:100%; height:100%; min-height:120px; object-fit:cover;" />
-          <img src="images/treehouse-timber.jpg" alt="Polished timber wall and woven palm roof" loading="lazy" decoding="async" style="width:100%; height:100%; min-height:120px; object-fit:cover;" />
+          <img src="images/treehouse-night-04.jpeg" alt="The finished tree house glowing at night inside the forest canopy" loading="lazy" decoding="async" style="width:100%; height:100%; min-height:160px; object-fit:cover; grid-row:span 2;" />
+          <img src="images/treehouse-night-06.jpeg" alt="Front deck with branch railings and woven lanterns" loading="lazy" decoding="async" style="width:100%; height:100%; min-height:120px; object-fit:cover;" />
+          <img src="images/treehouse-bedroom-07.jpeg" alt="Double bed beside a window looking onto the garden" loading="lazy" decoding="async" style="width:100%; height:100%; min-height:120px; object-fit:cover;" />
         </div>
         <div style="background:#0F2A20; padding:clamp(28px,3.4vw,44px); display:flex; flex-direction:column; gap:22px;">
           <div>
@@ -376,10 +400,77 @@
           <ul style="margin:0; padding:0; list-style:none; display:grid; gap:12px; color:#D6E0D8; font-size:15px;">
             <li>Hand-built timber room with palm-thatch roof</li>
             <li>Private open-air deck above the ground</li>
+            <li>Attached bathroom with wash basin and toilet</li>
+            <li>Fresh linen and towels ready on arrival</li>
             <li>Meals served in the restaurant below</li>
             <li>Village experiences arranged from the property</li>
           </ul>
           <a href="#booking" style="margin-top:auto; align-self:flex-start; background:#C0913F; color:#0B1A12; padding:15px 28px; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; font-weight:600;" style-hover="background:#F7F3EA;">Enquire about dates</a>
+        </div>
+      </div>
+      <div id="treehouse-gallery" style="margin-top:clamp(48px,6vw,72px); border-top:1px solid rgba(247,243,234,0.14); padding-top:34px;">
+        <div style="display:flex; align-items:end; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-bottom:22px;">
+          <div>
+            <p style="margin:0 0 10px; font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:#C0913F;">Tree house gallery</p>
+            <h3 style="margin:0; font-family:Marcellus, serif; font-weight:400; font-size:clamp(24px,3vw,36px); line-height:1.16; color:#F7F3EA;">Inside and around the finished tree house.</h3>
+          </div>
+          <p style="margin:0; color:#7E9488; font-size:15px; line-height:1.7; max-width:42ch;">Real photos of the bedroom, the lantern-lit deck at night and the attached bathroom. Tap any photo to see it larger.</p>
+        </div>
+        <div class="th-tabs" role="group" aria-label="Tree house photo categories">
+          <button type="button" class="th-tab" data-th-tab="bedroom" aria-pressed="true">Bedroom</button>
+          <button type="button" class="th-tab" data-th-tab="night" aria-pressed="false">Tree house at night</button>
+          <button type="button" class="th-tab" data-th-tab="bath" aria-pressed="false">Bathroom</button>
+        </div>
+        <div class="th-grid is-active" data-th-panel="bedroom">
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bedroom-01.jpeg" aria-label="Open photo: Double bed under a timber ceiling with a woven pendant lamp"><img src="images/treehouse-bedroom-01.jpeg" alt="Double bed under a timber ceiling with a woven pendant lamp" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bedroom-02.jpeg" aria-label="Open photo: Double bed with mint linen and a rolled towel"><img src="images/treehouse-bedroom-02.jpeg" alt="Double bed with mint linen and a rolled towel" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bedroom-03.jpeg" aria-label="Open photo: Two beds side by side under warm wall lights"><img src="images/treehouse-bedroom-03.jpeg" alt="Two beds side by side under warm wall lights" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bedroom-04.jpeg" aria-label="Open photo: Bedroom with timber walls and a garden window"><img src="images/treehouse-bedroom-04.jpeg" alt="Bedroom with timber walls and a garden window" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bedroom-05.jpeg" aria-label="Open photo: Bed made with fresh towels and flowers"><img src="images/treehouse-bedroom-05.jpeg" alt="Bed made with fresh towels and flowers" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bedroom-06.jpeg" aria-label="Open photo: Close view of the double bed and wall lamp"><img src="images/treehouse-bedroom-06.jpeg" alt="Close view of the double bed and wall lamp" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bedroom-07.jpeg" aria-label="Open photo: Double bed beside a window looking onto the garden"><img src="images/treehouse-bedroom-07.jpeg" alt="Double bed beside a window looking onto the garden" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bedroom-08.jpeg" aria-label="Open photo: Bed with welcome towels and a timber headboard"><img src="images/treehouse-bedroom-08.jpeg" alt="Bed with welcome towels and a timber headboard" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bedroom-09.jpeg" aria-label="Open photo: Freshly made beds with folded towels and red flowers"><img src="images/treehouse-bedroom-09.jpeg" alt="Freshly made beds with folded towels and red flowers" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bedroom-10.jpeg" aria-label="Open photo: Beds by the window in natural daylight"><img src="images/treehouse-bedroom-10.jpeg" alt="Beds by the window in natural daylight" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bedroom-11.jpeg" aria-label="Open photo: Both double beds made up with towels"><img src="images/treehouse-bedroom-11.jpeg" alt="Both double beds made up with towels" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bedroom-12.jpeg" aria-label="Open photo: Bedroom with a window over the trees"><img src="images/treehouse-bedroom-12.jpeg" alt="Bedroom with a window over the trees" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bedroom-13.jpeg" aria-label="Open photo: Mint green bedding against the timber wall"><img src="images/treehouse-bedroom-13.jpeg" alt="Mint green bedding against the timber wall" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bedroom-14.jpeg" aria-label="Open photo: A-frame bedroom with two beds at night"><img src="images/treehouse-bedroom-14.jpeg" alt="A-frame bedroom with two beds at night" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bedroom-15.jpeg" aria-label="Open photo: Two beds under the sloping timber roof"><img src="images/treehouse-bedroom-15.jpeg" alt="Two beds under the sloping timber roof" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bedroom-16.jpeg" aria-label="Open photo: Bed beneath the A-frame timber ceiling"><img src="images/treehouse-bedroom-16.jpeg" alt="Bed beneath the A-frame timber ceiling" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bedroom-17.jpeg" aria-label="Open photo: Bedroom and bathroom entrance in the tree house"><img src="images/treehouse-bedroom-17.jpeg" alt="Bedroom and bathroom entrance in the tree house" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bedroom-18.jpeg" aria-label="Open photo: Bed under a woven lantern and timber beams"><img src="images/treehouse-bedroom-18.jpeg" alt="Bed under a woven lantern and timber beams" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bedroom-19.jpeg" aria-label="Open photo: Sloping timber walls inside the tree house"><img src="images/treehouse-bedroom-19.jpeg" alt="Sloping timber walls inside the tree house" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bedroom-20.jpeg" aria-label="Open photo: Bed beside the central timber post"><img src="images/treehouse-bedroom-20.jpeg" alt="Bed beside the central timber post" loading="lazy" decoding="async" /></button>
+        </div>
+        <div class="th-grid" data-th-panel="night">
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-night-01.jpeg" aria-label="Open photo: Tree house raised on poles under the night sky"><img src="images/treehouse-night-01.jpeg" alt="Tree house raised on poles under the night sky" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-night-02.jpeg" aria-label="Open photo: Tree house lit up among the trees at dusk"><img src="images/treehouse-night-02.jpeg" alt="Tree house lit up among the trees at dusk" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-night-03.jpeg" aria-label="Open photo: Steel stairway rising to the tree house beneath a large tree"><img src="images/treehouse-night-03.jpeg" alt="Steel stairway rising to the tree house beneath a large tree" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-night-04.jpeg" aria-label="Open photo: Tree house glowing at night inside the forest canopy"><img src="images/treehouse-night-04.jpeg" alt="Tree house glowing at night inside the forest canopy" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-night-05.jpeg" aria-label="Open photo: Night view up the stairs into the lit tree house"><img src="images/treehouse-night-05.jpeg" alt="Night view up the stairs into the lit tree house" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-night-06.jpeg" aria-label="Open photo: Front deck with branch railings and woven lanterns"><img src="images/treehouse-night-06.jpeg" alt="Front deck with branch railings and woven lanterns" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-night-07.jpeg" aria-label="Open photo: Tree house entrance framed by a living branch"><img src="images/treehouse-night-07.jpeg" alt="Tree house entrance framed by a living branch" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-night-08.jpeg" aria-label="Open photo: Lantern-lit gable and stairs under tree branches"><img src="images/treehouse-night-08.jpeg" alt="Lantern-lit gable and stairs under tree branches" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-night-09.jpeg" aria-label="Open photo: Stairs to the tree house deck lit at night"><img src="images/treehouse-night-09.jpeg" alt="Stairs to the tree house deck lit at night" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-night-10.jpeg" aria-label="Open photo: Side view of the tree house stairs and palm-thatch roof"><img src="images/treehouse-night-10.jpeg" alt="Side view of the tree house stairs and palm-thatch roof" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-night-11.jpeg" aria-label="Open photo: Wooden steps up to the tree house deck"><img src="images/treehouse-night-11.jpeg" alt="Wooden steps up to the tree house deck" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-night-12.jpeg" aria-label="Open photo: Lit timber front and stairway of the tree house"><img src="images/treehouse-night-12.jpeg" alt="Lit timber front and stairway of the tree house" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-night-13.jpeg" aria-label="Open photo: Tree house deck with a branch crossing the entrance"><img src="images/treehouse-night-13.jpeg" alt="Tree house deck with a branch crossing the entrance" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-night-14.jpeg" aria-label="Open photo: Woven lantern over the tree house deck"><img src="images/treehouse-night-14.jpeg" alt="Woven lantern over the tree house deck" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-night-15.jpeg" aria-label="Open photo: Stairway and tree house glowing through the leaves"><img src="images/treehouse-night-15.jpeg" alt="Stairway and tree house glowing through the leaves" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-night-16.jpeg" aria-label="Open photo: Polished timber front wall and window of the tree house"><img src="images/treehouse-night-16.jpeg" alt="Polished timber front wall and window of the tree house" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-night-17.jpeg" aria-label="Open photo: Timber wall and woven pendant lamp on the deck"><img src="images/treehouse-night-17.jpeg" alt="Timber wall and woven pendant lamp on the deck" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-night-18.jpeg" aria-label="Open photo: Hand-made timber doors with branch handles"><img src="images/treehouse-night-18.jpeg" alt="Hand-made timber doors with branch handles" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-night-19.jpeg" aria-label="Open photo: Covered deck walkway beside the timber doors"><img src="images/treehouse-night-19.jpeg" alt="Covered deck walkway beside the timber doors" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-night-20.jpeg" aria-label="Open photo: Carved wooden masks on a polished timber wall"><img src="images/treehouse-night-20.jpeg" alt="Carved wooden masks on a polished timber wall" loading="lazy" decoding="async" /></button>
+        </div>
+        <div class="th-grid" data-th-panel="bath">
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bath-01.jpeg" aria-label="Open photo: Wash basin with a branch towel rail and wall light"><img src="images/treehouse-bath-01.jpeg" alt="Wash basin with a branch towel rail and wall light" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bath-02.jpeg" aria-label="Open photo: Timber-framed mirror and shelves in the bathroom"><img src="images/treehouse-bath-02.jpeg" alt="Timber-framed mirror and shelves in the bathroom" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bath-03.jpeg" aria-label="Open photo: Bathroom basin and timber door"><img src="images/treehouse-bath-03.jpeg" alt="Bathroom basin and timber door" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bath-04.jpeg" aria-label="Open photo: Attached bathroom with toilet and basin"><img src="images/treehouse-bath-04.jpeg" alt="Attached bathroom with toilet and basin" loading="lazy" decoding="async" /></button>
+          <button type="button" class="th-thumb" data-th-full="images/treehouse-bath-05.jpeg" aria-label="Open photo: Bathroom with timber ceiling and wall light"><img src="images/treehouse-bath-05.jpeg" alt="Bathroom with timber ceiling and wall light" loading="lazy" decoding="async" /></button>
         </div>
       </div>
     </div>
@@ -877,6 +968,14 @@ class Component extends DCLogic {
       "The Stay": "නවාතැන",
       "One tree house. The whole forest to yourself.": "එක් ගස් නිවසක්. ඔබටම වෙන් වූ වනයේ සුවය.",
       "Our only unit": "අපගේ එකම ඒකකය",
+      "Tree house gallery": "ගස් නිවසේ ඡායාරූප",
+      "Inside and around the finished tree house.": "නිම කළ ගස් නිවස ඇතුළත සහ අවට.",
+      "Real photos of the bedroom, the lantern-lit deck at night and the attached bathroom. Tap any photo to see it larger.": "නිදන කාමරය, රාත්‍රියේ පහන් දැල්වූ තට්ටුව සහ සම්බන්ධ නාන කාමරයේ සැබෑ ඡායාරූප. විශාලව බැලීමට ඕනෑම ඡායාරූපයක් ඔබන්න.",
+      "Bedroom": "නිදන කාමරය",
+      "Tree house at night": "රාත්‍රියේ ගස් නිවස",
+      "Bathroom": "නාන කාමරය",
+      "Attached bathroom with wash basin and toilet": "මුහුණ සෝදන බේසමක් සහ වැසිකිළියක් සහිත සම්බන්ධ නාන කාමරය",
+      "Fresh linen and towels ready on arrival": "පැමිණෙන විට පිරිසිදු ඇතිරිලි සහ තුවා සූදානම්",
       "The Tusker Tree House": "The Tusker ගස් නිවස",
       "A raised timber room with an open deck, branch railings and a palm-thatch roof. Sleeps four in two double beds, with the forest on every side.": "විවෘත ඩෙක් එකක්, අතු වැටවල් සහ තල් කොළ වහලක් සහිත ඉහළට ඉදිකළ ලී කාමරයක්. දෙපසම වනය ඇති අතර ද්විත්ව ඇඳන් දෙකකින් සිව්දෙනෙකුට නවාතැන් ගත හැක.",
       "Beds": "ඇඳන්",
@@ -1060,6 +1159,14 @@ class Component extends DCLogic {
       "The Stay": "தங்கும் அனுபவம்",
       "One tree house. The whole forest to yourself.": "ஒரு மர வீடு. முழு காட்டு அமைதி உங்களுக்கே.",
       "Our only unit": "எங்களின் ஒரே அலகு",
+      "Tree house gallery": "மர வீடு புகைப்படங்கள்",
+      "Inside and around the finished tree house.": "முடிக்கப்பட்ட மர வீட்டின் உள்ளேயும் சுற்றிலும்.",
+      "Real photos of the bedroom, the lantern-lit deck at night and the attached bathroom. Tap any photo to see it larger.": "படுக்கையறை, இரவில் விளக்கேற்றிய மேடை மற்றும் இணைக்கப்பட்ட குளியலறையின் உண்மையான புகைப்படங்கள். பெரிதாகப் பார்க்க எந்தப் புகைப்படத்தையும் தட்டவும்.",
+      "Bedroom": "படுக்கையறை",
+      "Tree house at night": "இரவில் மர வீடு",
+      "Bathroom": "குளியலறை",
+      "Attached bathroom with wash basin and toilet": "கை கழுவும் தொட்டி மற்றும் கழிப்பறையுடன் இணைக்கப்பட்ட குளியலறை",
+      "Fresh linen and towels ready on arrival": "வந்தவுடன் சுத்தமான படுக்கை விரிப்புகள் மற்றும் துண்டுகள் தயார்",
       "The Tusker Tree House": "The Tusker மர வீடு",
       "A raised timber room with an open deck, branch railings and a palm-thatch roof. Sleeps four in two double beds, with the forest on every side.": "திறந்த டெக், கிளை கைப்பிடிகள் மற்றும் பனை ஓலை கூரையுடன் உயர்த்திக் கட்டப்பட்ட மர அறை. இரண்டு இரட்டை படுக்கைகளில் நான்கு பேர் தங்கலாம்; எல்லா பக்கமும் காடு.",
       "Beds": "படுக்கைகள்",
@@ -1344,6 +1451,74 @@ class Component extends DCLogic {
   } else {
     startBoatVideos();
   }
+})();
+</script>
+<script data-run-after-dc>
+(function () {
+  let box = null;
+  let items = [];
+  let index = 0;
+
+  function ensureBox() {
+    if (box) return box;
+    box = document.createElement("div");
+    box.className = "th-lightbox";
+    box.setAttribute("role", "dialog");
+    box.setAttribute("aria-modal", "true");
+    box.setAttribute("aria-label", "Tree house photo");
+    box.innerHTML = '<img alt="" /><button type="button" class="th-lb-close" aria-label="Close">&times;</button><button type="button" class="th-lb-prev" aria-label="Previous photo">&#8249;</button><button type="button" class="th-lb-next" aria-label="Next photo">&#8250;</button><p class="th-lb-count"></p>';
+    document.body.appendChild(box);
+    box.addEventListener("click", (event) => {
+      if (event.target.closest(".th-lb-prev")) show(index - 1);
+      else if (event.target.closest(".th-lb-next")) show(index + 1);
+      else if (event.target.closest(".th-lb-close") || event.target === box) close();
+    });
+    return box;
+  }
+
+  function show(i) {
+    index = (i + items.length) % items.length;
+    const thumb = items[index];
+    const img = box.querySelector("img");
+    img.src = thumb.dataset.thFull;
+    img.alt = thumb.querySelector("img")?.alt || "";
+    box.querySelector(".th-lb-count").textContent = (index + 1) + " / " + items.length;
+  }
+
+  function open(thumb) {
+    ensureBox();
+    items = Array.from(thumb.closest("[data-th-panel]").querySelectorAll(".th-thumb"));
+    show(items.indexOf(thumb));
+    box.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+    box.querySelector(".th-lb-close").focus();
+  }
+
+  function close() {
+    if (!box) return;
+    box.classList.remove("is-open");
+    document.body.style.overflow = "";
+    items[index]?.focus();
+  }
+
+  document.addEventListener("click", (event) => {
+    const tab = event.target.closest("[data-th-tab]");
+    if (tab) {
+      const key = tab.dataset.thTab;
+      document.querySelectorAll("[data-th-tab]").forEach((b) => b.setAttribute("aria-pressed", String(b === tab)));
+      document.querySelectorAll("[data-th-panel]").forEach((p) => p.classList.toggle("is-active", p.dataset.thPanel === key));
+      return;
+    }
+    const thumb = event.target.closest(".th-thumb");
+    if (thumb) open(thumb);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!box || !box.classList.contains("is-open")) return;
+    if (event.key === "Escape") close();
+    else if (event.key === "ArrowLeft") show(index - 1);
+    else if (event.key === "ArrowRight") show(index + 1);
+  });
 })();
 </script>
 </body>
